@@ -1,16 +1,142 @@
 actAs: [Timestampable]
 
+#-------------------------------------------------------------------------------
 User:
-  tableName:       kiwi_user
+  tableName:          user
   columns:
-    email:         { type: string(255), notnull: true, unique: true }
-    password:      { type: string(32), notnull: true }
-    display_name:  { type: string(16), notnull: true, unique: true }
-    is_active:     { type: boolean, notnull: true, default: true }
-    language:      { type: string(5), notnull: true }
-    theme:         { type: string(32), notnull: true }
+    email:            { type: string(255), notnull: true, unique: true }
+    password:         { type: string(32), notnull: true }
+    display_name:     { type: string(16), notnull: true, unique: true }
+    is_active:        { type: boolean, notnull: true, default: true }
+    is_admin:         { type: boolean, notnull: true, default: false }
+    language:         { type: string(5), notnull: true }
+    theme:            { type: string(32), notnull: true }
+    last_login_at:    { type: timestamp }
+  relations:
+    Projects:
+      class:          Project
+      foreignAlias:   Users
+      refClass:       ProjectMember
+      local:          user_id
+      foreign:        project_id
 
+#-------------------------------------------------------------------------------
+Role:
+  tableName:          role
+  columns:
+    role_name:        { type: string(32), notnull: true }
+    is_builtin:       { type: boolean, notnull: true, default: false }
+    permissions:      { type: clob(65532) }
 
+#-------------------------------------------------------------------------------
+Permission:
+  tableName:          permission
+  columns:
+    permission_name:  { type: string(64), notnull: true, unique: true }
+    category:         { type: string(64), notnull: true }
+    display_name:     { type: string(32), notnull: true }
+
+#-------------------------------------------------------------------------------
+Project:
+  tableName:          project
+  columns:
+    project_name:     { type: string(128), notnull: true }
+    project_status:
+      type:           enum
+      values:         [potential, open, closed]
+      default:        potential
+  actAs:
+    Sluggable:
+      fields:         [project_name]
+      unique:         true
+
+#-------------------------------------------------------------------------------
+ProjectMember:
+  tableName:          project_member
+  columns:
+    user_id:          { type: integer, primary: true }
+    project_id:       { type: integer, primary: true }
+    role_id:          { type: integer }
+  relations:
+    User:
+      local:          user_id
+      foreign:        id
+      foreignAlias:   ProjectMembers
+    Project:
+      local:          project_id
+      foreign:        id
+      foreignAlias:   ProjectMembers
+    Role:
+      foreignAlias:   ProjectMembers
+      local:          role_id
+      foreign:        id
+      type:           one
+      foreignType:    many
+
+#-------------------------------------------------------------------------------
+Component:
+  tableName:          component
+  columns:
+    project_id:       { type: integer }
+    component_name:   { type: string(64), notnull: true }
+    description:      { type: string(255) }
+  relations:
+    Project:
+      foreignAlias:   Components
+      local:          project_id
+      foreign:        id
+      type:           one
+      foreignType:    many
+  actAs:
+    NestedSet:
+      hasManyRoots:   true
+      rootColumnName: root_id
+
+#-------------------------------------------------------------------------------
+MileStone:
+  tableName:          milestone
+  columns:
+    project_id:       { type: integer }
+    milestone_name:   { type: string(64), notnull: true }
+    due:              { type: date }
+    description:      { type: string(255) }
+  relations:
+    Project:
+      foreignAlias:   MileStones
+      local:          project_id
+      foreign:        id
+      type:           one
+      foreignType:    many
+
+#-------------------------------------------------------------------------------
+Ticket:
+  tableName:          ticket
+  columns:
+    project_id:       { type: integer }
+    component_id:     { type: integer }
+    milestone_id:     { type: integer }
+    description:      { type: clob(65532) }
+  relations:
+    Project:
+      foreignAlias:   Tickets
+      local:          project_id
+      foreign:        id
+      type:           one
+      foreignType:    many
+    Component:
+      foreignAlias:   Tickets
+      local:          component_id
+      foreign:        id
+      type:           one
+      foreignType:    many
+    MileStone:
+      foreignAlias:   Tickets
+      local:          milestone_id
+      foreign:        id
+      type:           one
+      foreignType:    many
+
+#-------------------------------------------------------------------------------
 
 
 
