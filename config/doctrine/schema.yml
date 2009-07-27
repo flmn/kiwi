@@ -1,0 +1,20 @@
+actAs: [Timestampable]
+
+User:
+  tableName:       kiwi_user
+  columns:
+    email:         { type: string(255), notnull: true, unique: true }
+    password:      { type: string(32), notnull: true }
+    display_name:  { type: string(16), notnull: true, unique: true }
+    is_active:     { type: boolean, notnull: true, default: true }
+    language:      { type: string(5), notnull: true }
+    theme:         { type: string(32), notnull: true }
+
+
+
+
+
+
+
+
+

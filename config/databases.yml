@@ -1,0 +1,20 @@
+dev:
+  doctrine:
+    param:
+      classname:  DebugPDO
+
+test:
+  doctrine:
+    param:
+      classname:  DebugPDO
+
+all:
+  doctrine:
+    class:        sfDoctrineDatabase
+    param:
+      dsn:        mysql:host=localhost;dbname=kiwi
+      username:   kiwi
+      password:   kiwi
+      encoding:   utf8
+      persistent: true
+      pooling:    true
