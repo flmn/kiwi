@@ -43,15 +43,6 @@
           <li class="ui-state-default <?php if ($sf_request->getParameter('module') == 'home'):echo 'ui-tabs-selected ui-state-active'; endif?>">
             <?php echo link_to(__('Home'), 'home/index') ?>
           </li>
-          <li class="ui-state-default <?php if ($sf_request->getParameter('module') == 'device' || $sf_request->getParameter('module') == 'tail' || $sf_request->getParameter('module') == 'fleet'):echo 'ui-tabs-selected ui-state-active'; endif?>">
-            <?php echo link_to(__('Devices'), 'device/index') ?>
-          </li>
-          <li class="ui-state-default <?php if ($sf_request->getParameter('module') == 'content'):echo 'ui-tabs-selected ui-state-active'; endif?>">
-            <?php echo link_to(__('Contents'), 'content/index') ?>
-          </li>
-          <li class="ui-state-default <?php if ($sf_request->getParameter('module') == 'report'):echo 'ui-tabs-selected ui-state-active'; endif?>">
-            <?php echo link_to(__('Reports'), 'report/index') ?>
-          </li>
         </ul>
       </div>
     </div>

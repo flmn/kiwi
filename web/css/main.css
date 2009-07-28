@@ -1,0 +1,48 @@
+#header {
+  background-color: white;
+}
+
+#logo {
+  float: left;
+  padding: 4px;
+}
+
+#tools {
+  float: right;
+}
+
+#menu {
+  text-align: right;
+  border-bottom: dotted 1px gray;
+  padding-left: 16px;
+  padding-top: 4px;
+  padding-right: 16px;
+  padding-bottom: 4px;
+}
+
+#search {
+  text-align: right;
+  padding-left: 16px;
+  padding-top: 4px;
+  padding-right: 16px;
+  padding-bottom: 4px;
+}
+
+#north {
+}
+
+#west {
+  padding: 8px;
+}
+
+#south {
+  text-align: center;
+  padding-top: 4px;
+}
+
+#center {
+}
+
+
+
+

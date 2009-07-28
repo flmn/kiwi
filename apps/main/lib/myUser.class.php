@@ -7,6 +7,6 @@ class myUser extends sfBasicSecurityUser
     // initialize parent
     parent::initialize($dispatcher, $storage, $options);
 
-    $this->setAttribute('kiwi.theme', sfConfig::get('sf_default_theme') );
+    $this->setAttribute('kiwi.theme', sfConfig::get('sf_default_theme'));
   }
 }
