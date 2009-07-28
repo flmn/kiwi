@@ -13,7 +13,7 @@ User:
     theme:            { type: string(32), notnull: true }
     last_login_at:    { type: timestamp }
   relations:
-    Projects:
+    projects:
       class:          Project
       foreignAlias:   Users
       refClass:       ProjectMember
@@ -24,7 +24,7 @@ User:
 Role:
   tableName:          role
   columns:
-    role_name:        { type: string(32), notnull: true }
+    role_name:        { type: string(32), notnull: true, name: role_name as name }
     is_builtin:       { type: boolean, notnull: true, default: false }
     permissions:      { type: clob(65532) }
 
@@ -32,7 +32,7 @@ Role:
 Permission:
   tableName:          permission
   columns:
-    permission_name:  { type: string(64), notnull: true, unique: true }
+    permission_name:  { type: string(64), notnull: true, unique: true, name: permission_name as name }
     category:         { type: string(64), notnull: true }
     display_name:     { type: string(32), notnull: true }
 
@@ -40,7 +40,7 @@ Permission:
 Project:
   tableName:          project
   columns:
-    project_name:     { type: string(128), notnull: true }
+    project_name:     { type: string(128), notnull: true, name: project_name as name }
     project_status:
       type:           enum
       values:         [potential, open, closed]
@@ -66,22 +66,17 @@ ProjectMember:
       local:          project_id
       foreign:        id
       foreignAlias:   ProjectMembers
-    Role:
-      foreignAlias:   ProjectMembers
-      local:          role_id
-      foreign:        id
-      type:           one
-      foreignType:    many
 
 #-------------------------------------------------------------------------------
 Component:
   tableName:          component
   columns:
-    project_id:       { type: integer }
-    component_name:   { type: string(64), notnull: true }
+    project_id:       { type: integer, notnull: true }
+    component_name:   { type: string(64), notnull: true, name: component_name as name }
     description:      { type: string(255) }
   relations:
-    Project:
+    project:
+      class:          Project
       foreignAlias:   Components
       local:          project_id
       foreign:        id
@@ -93,16 +88,17 @@ Component:
       rootColumnName: root_id
 
 #-------------------------------------------------------------------------------
-MileStone:
+Milestone:
   tableName:          milestone
   columns:
-    project_id:       { type: integer }
-    milestone_name:   { type: string(64), notnull: true }
+    project_id:       { type: integer, notnull: true }
+    milestone_name:   { type: string(64), notnull: true, name: milestone_name as name }
     due:              { type: date }
     description:      { type: string(255) }
   relations:
-    Project:
-      foreignAlias:   MileStones
+    project:
+      class:          Project
+      foreignAlias:   Milestones
       local:          project_id
       foreign:        id
       type:           one
@@ -112,26 +108,32 @@ MileStone:
 Ticket:
   tableName:          ticket
   columns:
-    project_id:       { type: integer }
-    component_id:     { type: integer }
+    project_id:       { type: integer, notnull: true }
+    component_id:     { type: integer, notnull: true }
     milestone_id:     { type: integer }
+    author_id:        { type: integer, notnull: true }
+    assigned_to_id:   { type: integer }
+    subject:          { type: string(255), notnull: true }
     description:      { type: clob(65532) }
   relations:
-    Project:
+    project:
+      class:          Project
       foreignAlias:   Tickets
       local:          project_id
       foreign:        id
       type:           one
       foreignType:    many
-    Component:
+    component:
+      class:          Component
       foreignAlias:   Tickets
       local:          component_id
       foreign:        id
       type:           one
       foreignType:    many
-    MileStone:
+    author:
+      class:          User
       foreignAlias:   Tickets
-      local:          milestone_id
+      local:          author_id
       foreign:        id
       type:           one
       foreignType:    many
