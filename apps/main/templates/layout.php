@@ -5,8 +5,100 @@
     <?php include_metas() ?>
     <?php include_title() ?>
     <link rel="shortcut icon" href="/favicon.ico" />
+
+    <script type="text/javascript" src="/js/jquery.js"></script>
+    <script type="text/javascript" src="/js/jquery-ui.js"></script>
+    <script type="text/javascript" src="/js/jquery.layout.js"></script>
+
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="/css/bp/ie.css" type="text/css" media="screen, projection" />
+    <![endif]-->
+    <link rel="stylesheet" href="/css/bp/screen.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="/themes/<?php echo $sf_user->getAttribute('kiwi.theme') ?>/jquery-ui.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="/themes/<?php echo $sf_user->getAttribute('kiwi.theme') ?>/theme.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="/css/symfony.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="/css/main.css" type="text/css" media="screen, projection" />
   </head>
   <body>
-    <?php echo $sf_content ?>
+    <div id="north" class="ui-layout-north kiwi-panel">
+      <div id="header">
+        <div id="logo">
+          <a href="<?php echo url_for('@homepage') ?>"><img alt="logo" src="/img/logo.png" /></a>
+        </div>
+        <div id="tools">
+          <div id="menu">
+            <?php echo __('Welcome') ?>, <?php echo $sf_user->getAttribute('kiwi.display_name') ?> [<?php echo link_to(__('Logout'), 'account/logout') ?>] |  <?php echo link_to(__('Profile'), 'account/profile') ?> |   <?php echo link_to(__('Admin'), 'admin/index') ?> |   <?php echo link_to(__('Help'), 'help/index') ?>
+          </div>
+          <div id="search">
+            <form action="<?php echo url_for('home/index') ?>">
+              <input type="text" value="" size="20" id="query_string" name="query_string" />
+              <input type="submit" value="<?php echo __('Search') ?>" />
+            </form>
+          </div>
+        </div>
+        <div class="clear"></div>
+      </div>
+      <div id="navigation" class="ui-tabs ui-widget">
+        <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header">
+          <li class="ui-state-default <?php if ($sf_request->getParameter('module') == 'home'):echo 'ui-tabs-selected ui-state-active'; endif?>">
+            <?php echo link_to(__('Home'), 'home/index') ?>
+          </li>
+          <li class="ui-state-default <?php if ($sf_request->getParameter('module') == 'device' || $sf_request->getParameter('module') == 'tail' || $sf_request->getParameter('module') == 'fleet'):echo 'ui-tabs-selected ui-state-active'; endif?>">
+            <?php echo link_to(__('Devices'), 'device/index') ?>
+          </li>
+          <li class="ui-state-default <?php if ($sf_request->getParameter('module') == 'content'):echo 'ui-tabs-selected ui-state-active'; endif?>">
+            <?php echo link_to(__('Contents'), 'content/index') ?>
+          </li>
+          <li class="ui-state-default <?php if ($sf_request->getParameter('module') == 'report'):echo 'ui-tabs-selected ui-state-active'; endif?>">
+            <?php echo link_to(__('Reports'), 'report/index') ?>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div id="west" class="ui-layout-west kiwi-panel">
+      <?php if (!include_slot('sidebar')): ?>
+      <p>&nbsp;</p>
+      <?php endif; ?>
+    </div>
+
+    <div id="center" class="ui-layout-center">
+      <?php echo $sf_content ?>
+    </div>
+
+    <div id="south" class="ui-layout-south kiwi-panel">
+      <p>Copyright &copy; 2009 ABCD.</p>
+    </div>
+
+    <script type="text/javascript">
+      var layout;
+      $(document).ready(function () {
+        layout = $('body').layout(layout_settings);
+        $('#navigation > ul > li').mouseenter(function(){$(this).addClass("ui-state-hover")}).mouseout(function(){$(this).removeClass("ui-state-hover")});
+      });
+
+      var layout_settings = {
+        defaults: {
+          spacing_open: 0,
+          togglerLength_open: 0,
+          togglerLength_closed:	-1,
+          resizable: false,
+          slidable: false,
+          fxName: "none"
+        },
+        north: {
+          size: 120
+        },
+        west: {
+          size: 200
+        },
+        center: {
+          applyDefaultStyles: true
+        },
+        south: {
+          size: 30
+        }
+      };
+    </script>
   </body>
 </html>
