@@ -26,9 +26,6 @@
           <a href="<?php echo url_for('@homepage') ?>"><img alt="logo" src="/img/logo.png" /></a>
         </div>
         <div id="tools">
-          <div id="menu">
-            <?php echo __('Welcome') ?>, <?php echo $sf_user->getAttribute('kiwi.display_name') ?> [<?php echo link_to(__('Logout'), 'account/logout') ?>] |  <?php echo link_to(__('Profile'), 'account/profile') ?> |   <?php echo link_to(__('Admin'), 'admin/index') ?> |   <?php echo link_to(__('Help'), 'help/index') ?>
-          </div>
           <div id="search">
             <form action="<?php echo url_for('home/index') ?>">
               <input type="text" value="" size="20" id="query_string" name="query_string" />
@@ -78,7 +75,7 @@
           fxName: "none"
         },
         north: {
-          size: 120
+          size: 80
         },
         west: {
           size: 200

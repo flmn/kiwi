@@ -5,3 +5,4 @@ lib/form/doctrine/base/*
 lib/model/doctrine/base/*
 lib/symfony
 log/*
+/nbproject/private/
