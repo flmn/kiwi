@@ -26,6 +26,9 @@
           <a href="<?php echo url_for('@homepage') ?>"><img alt="logo" src="/img/logo.png" /></a>
         </div>
         <div id="tools">
+          <div id="menu">
+            <?php echo __('Welcome') ?>, <?php echo $sf_user->getAttribute('kiwi.display_name') ?> [<?php echo link_to(__('Logout'), 'account/logout') ?>] |  <?php echo link_to(__('Profile'), 'account/profile') ?> |   <?php echo link_to(__('Admin'), 'admin/index') ?> |   <?php echo link_to(__('Help'), 'help/index') ?>
+          </div>
           <div id="search">
             <form action="<?php echo url_for('home/index') ?>">
               <input type="text" value="" size="20" id="query_string" name="query_string" />
@@ -34,13 +37,6 @@
           </div>
         </div>
         <div class="clear"></div>
-      </div>
-      <div id="navigation" class="ui-tabs ui-widget">
-        <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header">
-          <li class="ui-state-default <?php if ($sf_request->getParameter('module') == 'home'):echo 'ui-tabs-selected ui-state-active'; endif?>">
-            <?php echo link_to(__('Home'), 'home/index') ?>
-          </li>
-        </ul>
       </div>
     </div>
 

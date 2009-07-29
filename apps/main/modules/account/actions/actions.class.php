@@ -8,13 +8,12 @@
  * @author     Your name here
  * @version    SVN: $Id: actions.class.php 12479 2008-10-31 10:54:40Z fabien $
  */
-class accountActions extends sfActions
-{
- /**
-  * Executes login action
-  *
-  * @param sfRequest $request A request object
-  */
+class accountActions extends sfActions {
+/**
+ * Executes login action
+ *
+ * @param sfRequest $request A request object
+ */
   public function executeLogin(sfWebRequest $request) {
     $user = $this->getUser();
     if ($user->isAuthenticated()) {
@@ -51,5 +50,37 @@ class accountActions extends sfActions
   public function executeLogout(sfWebRequest $request) {
     $this->getUser()->logout();
     return $this->redirect('@homepage');
+  }
+
+  /**
+   * Executes profile action
+   *
+   * @param sfRequest $request A request object
+   */
+  public function executeProfile(sfWebRequest $request) {
+    $this->user = $this->getUser()->getUserObject();
+    $this->cultures = sfConfig::get('sf_cultures');
+    $this->themes = sfConfig::get('sf_themes');
+  }
+
+  /**
+   * Executes profile action
+   *
+   * @param sfRequest $request A request object
+   */
+  public function executeProfileEdit(sfWebRequest $request) {
+    $user = $this->getUser();
+
+    $this->form = new ProfileForm($user->getUserObject());
+
+    if ($request->isMethod('post')) {
+      $parameters = array_merge($request->getParameter($this->form->getName()), array('id' => $user->getUserObject()->getId()));
+      $this->form->bind($parameters, $request->getFiles($this->form->getName()));
+      if ($this->form->isValid()) {
+        $this->form->save();
+        $user->updateProfile();
+        $user->setFlash('success', 'The item was updated successfully.', false);
+      }
+    }
   }
 }

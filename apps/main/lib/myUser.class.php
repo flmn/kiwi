@@ -9,7 +9,7 @@ class myUser extends sfBasicSecurityUser
     // initialize parent
     parent::initialize($dispatcher, $storage, $options);
 
-    $this->setAttribute('kiwi.theme', sfConfig::get('sf_default_theme'));
+    $this->setAttribute('kiwi.theme', $this->getAttribute('kiwi.theme', sfConfig::get('sf_default_theme')));
   }
 
   protected function _setAttributes($user) {
@@ -33,7 +33,7 @@ class myUser extends sfBasicSecurityUser
   }
 
   public function getUserObject() {
-    if (!$this->user && $id = $this->getAttribute('user_id', null, 'cdms')) {
+    if (!$this->user && $id = $this->getAttribute('kiwi.user_id', null)) {
       $this->user = Doctrine::getTable('User')->find($id);
 
       if (!$this->user) {
