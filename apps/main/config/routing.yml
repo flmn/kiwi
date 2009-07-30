@@ -1,3 +1,13 @@
+
+user:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                User
+    module:               user
+    prefix_path:          admin/user
+    column:               id
+    with_wildcard_routes: true
+
 # default rules
 homepage:
   url:   /

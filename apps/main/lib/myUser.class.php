@@ -19,6 +19,8 @@ class myUser extends sfBasicSecurityUser
   }
 
   public function login($user) {
+    $user->setLastLoginAt(date('Y-m-d H:i:s'));
+    $user->save();
     $this->setAttribute('kiwi.user_id', $user->getId());
     $this->_setAttributes($user);
     $this->setAuthenticated(true);

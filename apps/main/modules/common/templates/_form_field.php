@@ -1,5 +1,5 @@
-<?php echo $form[$name]->renderLabel() ?><br/>
-  <?php echo $form[$name]->render($attributes) ?><br/>
-<?php if ($form[$name]->hasError()): ?>
-  <?php echo $form[$name]->renderError(); ?>
-<?php endif; ?>
+<tr>
+  <td class="key"><?php echo $form[$name]->renderLabel() ?></td>
+  <td><?php echo $form[$name]->render($attributes) ?></td>
+  <td><?php if ($form[$name]->hasError()): echo $form[$name]->renderError(); endif; ?></td>
+</tr>

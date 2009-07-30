@@ -14,10 +14,9 @@
     <link rel="stylesheet" href="/css/bp/ie.css" type="text/css" media="screen, projection" />
     <![endif]-->
     <link rel="stylesheet" href="/css/bp/screen.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="/css/symfony.css" type="text/css" media="screen, projection" />
     <link rel="stylesheet" href="/themes/<?php echo $sf_user->getAttribute('kiwi.theme') ?>/jquery-ui.css" type="text/css" media="screen, projection" />
     <link rel="stylesheet" href="/themes/<?php echo $sf_user->getAttribute('kiwi.theme') ?>/theme.css" type="text/css" media="screen, projection" />
-    <link rel="stylesheet" href="/css/symfony.css" type="text/css" media="screen, projection" />
-    <link rel="stylesheet" href="/css/main.css" type="text/css" media="screen, projection" />
   </head>
   <body>
     <?php echo $sf_content ?>

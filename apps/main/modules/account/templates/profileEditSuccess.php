@@ -11,54 +11,52 @@
       <input type="submit" value="<?php echo __('Save', array(), 'sf_admin') ?>" />
     </p>
     <?php include_partial('common/form_errors', array('form' => $form)) ?>
-    <fieldset>
-      <legend><?php echo __('Basic') ?></legend>
-      <p>
+    <table>
+      <thead>
+        <tr>
+          <th colspan="3"><?php echo __('Basic') ?></th>
+        </tr>
+      </thead>
+      <tbody>
         <?php include_partial('common/form_field', array(
             'form'       => $form,
             'name'       => 'display_name',
             'attributes' => array('class' => 'text'),
             )) ?>
-      </p>
-      <p>
         <?php include_partial('common/form_field', array(
             'form'       => $form,
             'name'       => 'language',
             'attributes' => array('class' => 'text'),
             )) ?>
-      </p>
-      <p>
         <?php include_partial('common/form_field', array(
             'form'       => $form,
             'name'       => 'theme',
             'attributes' => array('class' => 'text'),
             )) ?>
-      </p>
-    </fieldset>
-    <fieldset>
-      <legend><?php echo __('Change Password') ?></legend>
-      <p>
-        <?php include_partial('common/form_field', array(
-            'form'       => $form,
-            'name'       => 'password_old',
-            'attributes' => array('class' => 'text'),
-            )) ?>
-      </p>
-      <p>
-        <?php include_partial('common/form_field', array(
-            'form'       => $form,
-            'name'       => 'password_new',
-            'attributes' => array('class' => 'text'),
-            )) ?>
-      </p>
-      <p>
-        <?php include_partial('common/form_field', array(
-            'form'       => $form,
-            'name'       => 'password_again',
-            'attributes' => array('class' => 'text'),
-            )) ?>
-      </p>
-    </fieldset>
+      </tbody>
+    </table>
+    <table>
+      <thead>
+        <tr>
+          <th colspan="3"><?php echo __('Change Password') ?></th>
+        </tr>
+      </thead>
+      <?php include_partial('common/form_field', array(
+          'form'       => $form,
+          'name'       => 'password_old',
+          'attributes' => array('class' => 'text'),
+          )) ?>
+      <?php include_partial('common/form_field', array(
+          'form'       => $form,
+          'name'       => 'password_new',
+          'attributes' => array('class' => 'text'),
+          )) ?>
+      <?php include_partial('common/form_field', array(
+          'form'       => $form,
+          'name'       => 'password_again',
+          'attributes' => array('class' => 'text'),
+          )) ?>
+    </table>
     <p>
       <input type="submit" value="<?php echo __('Save', array(), 'sf_admin') ?>" />
     </p>
