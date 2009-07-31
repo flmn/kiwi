@@ -4,27 +4,23 @@
     <fieldset>
       <legend><?php echo __('Login') ?></legend>
       <?php include_partial('common/form_errors', array('form' => $form)) ?>
-      <p>
-        <?php include_partial('common/form_field', array(
-            'form'       => $form,
-            'name'       => 'email',
-            'attributes' => array('class' => 'text'),
-            )) ?>
-      </p>
-      <p>
-        <?php include_partial('common/form_field', array(
-            'form'       => $form,
-            'name'       => 'password',
-            'attributes' => array('class' => 'text'),
-            )) ?>
-      </p>
-      <p>
-        <?php include_partial('common/form_field', array(
-            'form'       => $form,
-            'name'       => 'captcha',
-            'attributes' => array('class' => 'text'),
-            )) ?>
-      </p>
+      <table style="border: 0">
+        <tr>
+          <td style="text-align: right;width: 15em;"><?php echo $form['email']->renderLabel() ?></td>
+          <td><?php echo $form['email']->render(array('class' => 'text')) ?></td>
+          <td><?php if ($form['email']->hasError()): echo $form['email']->renderError(); endif; ?></td>
+        </tr>
+        <tr>
+          <td style="text-align: right;width: 15em;"><?php echo $form['password']->renderLabel() ?></td>
+          <td><?php echo $form['password']->render(array('class' => 'text')) ?></td>
+          <td><?php if ($form['password']->hasError()): echo $form['password']->renderError(); endif; ?></td>
+        </tr>
+        <tr>
+          <td style="text-align: right;width: 15em;"><?php echo $form['captcha']->renderLabel() ?></td>
+          <td><?php echo $form['captcha']->render(array('class' => 'text')) ?></td>
+          <td><?php if ($form['captcha']->hasError()): echo $form['captcha']->renderError(); endif; ?></td>
+        </tr>
+      </table>
       <hr/>
       <p>
         <input type="submit" value="<?php echo __('Submit') ?>" />

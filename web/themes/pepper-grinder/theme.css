@@ -49,17 +49,17 @@
 }
 
 #login_email {
-  background: transparent url(/img/user.png) no-repeat scroll;
+  background: transparent url(images/user.png) no-repeat scroll;
   padding-left: 24px;
 }
 
 #login_password {
-  background: transparent url(/img/password.png) no-repeat scroll;
+  background: transparent url(images/password.png) no-repeat scroll;
   padding-left: 24px;
 }
 
 #login_captcha {
-  background: transparent url(/img/captcha.png) no-repeat scroll;
+  background: transparent url(images/captcha.png) no-repeat scroll;
   padding-left: 24px;
   width: 100px;
 }

@@ -20,11 +20,11 @@
         <th colspan="5">
           <?php if ($pager->haveToPaginate()): ?>
           <a href="<?php echo url_for('@user') ?>?page=1">
-              <?php echo image_tag('/img/first.png', array('alt' => __('First page', array(), 'sf_admin'), 'title' => __('First page', array(), 'sf_admin'))) ?>
+              <?php echo image_tag($sf_user->getThemeImage('first.png'), array('alt' => __('First page', array(), 'sf_admin'), 'title' => __('First page', array(), 'sf_admin'))) ?>
           </a>
           <span>&nbsp;</span>
           <a href="<?php echo url_for('@user') ?>?page=<?php echo $pager->getPreviousPage() ?>">
-              <?php echo image_tag('/img/previous.png', array('alt' => __('Previous page', array(), 'sf_admin'), 'title' => __('Previous page', array(), 'sf_admin'))) ?>
+              <?php echo image_tag($sf_user->getThemeImage('previous.png'), array('alt' => __('Previous page', array(), 'sf_admin'), 'title' => __('Previous page', array(), 'sf_admin'))) ?>
           </a>
           <span>&nbsp;</span>
             <?php foreach ($pager->getLinks() as $page): ?>
@@ -36,11 +36,11 @@
           <span>&nbsp;</span>
             <?php endforeach; ?>
           <a href="<?php echo url_for('@user') ?>?page=<?php echo $pager->getNextPage() ?>">
-              <?php echo image_tag('/img/next.png', array('alt' => __('Next page', array(), 'sf_admin'), 'title' => __('Next page', array(), 'sf_admin'))) ?>
+              <?php echo image_tag($sf_user->getThemeImage('next.png'), array('alt' => __('Next page', array(), 'sf_admin'), 'title' => __('Next page', array(), 'sf_admin'))) ?>
           </a>
           <span>&nbsp;</span>
           <a href="<?php echo url_for('@user') ?>?page=<?php echo $pager->getLastPage() ?>">
-              <?php echo image_tag('/img/last.png', array('alt' => __('Last page', array(), 'sf_admin'), 'title' => __('Last page', array(), 'sf_admin'))) ?>
+              <?php echo image_tag($sf_user->getThemeImage('last.png'), array('alt' => __('Last page', array(), 'sf_admin'), 'title' => __('Last page', array(), 'sf_admin'))) ?>
           </a>
           <span>&nbsp;&nbsp;&nbsp;&nbsp;</span>
           <?php endif; ?>

@@ -51,4 +51,9 @@ class myUser extends sfBasicSecurityUser
     $this->user = null;
     $this->_setAttributes($this->getUserObject());
   }
+
+  public function getThemeImage($img) {
+    $theme = $this->getAttribute('kiwi.theme', sfConfig::get('sf_default_theme'));
+    return '/themes/'.$theme.'/images/'.$img;
+  }
 }
