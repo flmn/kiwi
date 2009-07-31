@@ -15,12 +15,38 @@ class userActions extends sfActions {
  * @param sfRequest $request A request object
  */
   public function executeIndex(sfWebRequest $request) {
-  // pager
+    // sorting
+    if ($request->getParameter('sort')) {
+      $this->_setSort(array($request->getParameter('sort'), $request->getParameter('sort_type')));
+    }
+    // pager
     if ($request->getParameter('page')) {
       $this->_setPage($request->getParameter('page'));
     }
 
     $this->pager = $this->_getPager();
+    $this->sort = $this->_getSort();
+  }
+
+  public function executeFilter(sfWebRequest $request) {
+    $this->_setPage(1);
+
+    if ($request->hasParameter('_reset')) {
+      $this->_setFilters(array());
+      $this->redirect('@user');
+    }
+
+    $this->filters = new UserFormFilter($this->_getFilters(), array());
+    $this->filters->bind($request->getParameter($this->filters->getName()));
+    if ($this->filters->isValid()) {
+      $this->_setFilters($this->filters->getValues());
+      $this->redirect('@user');
+    }
+
+    $this->pager = $this->_getPager();
+    $this->sort = $this->_getSort();
+
+    $this->setTemplate('index');
   }
 
   public function executeNew(sfWebRequest $request) {
@@ -43,7 +69,7 @@ class userActions extends sfActions {
     $this->form = new UserForm($this->user);
     $this->setTemplate('form');
   }
-  
+
   public function executeUpdate(sfWebRequest $request) {
     $this->user = $this->getRoute()->getObject();
     $this->form = new UserForm($this->user);
@@ -63,10 +89,17 @@ class userActions extends sfActions {
     }
   }
 
+  protected function _getFilters() {
+    return $this->getUser()->getAttribute('user.filters', array());
+  }
+
+  protected function _setFilters(array $filters) {
+    return $this->getUser()->setAttribute('user.filters', $filters);
+  }
+
   protected function _getPager() {
-    $query = Doctrine_Query::create()->from('User u');
-    $pager = new sfDoctrinePager('User', 2);
-    $pager->setQuery($query);
+    $pager = new sfDoctrinePager('User', 20);
+    $pager->setQuery($this->_buildQuery());
     $pager->setPage($this->_getPage());
     $pager->init();
 
@@ -74,10 +107,48 @@ class userActions extends sfActions {
   }
 
   protected function _setPage($page) {
-    $this->getUser()->setAttribute('kiwi.user.page', $page);
+    $this->getUser()->setAttribute('user.page', $page);
   }
 
   protected function _getPage() {
-    return $this->getUser()->getAttribute('kiwi.user.page', 1);
+    return $this->getUser()->getAttribute('user.page', 1);
+  }
+
+  protected function _buildQuery() {
+    if (is_null($this->filters)) {
+      $this->filters = new UserFormFilter($this->_getFilters(), array());
+    }
+    $this->filters->setTableMethod('');
+    $query = $this->filters->buildQuery($this->_getFilters());
+
+    $this->_addSortQuery($query);
+
+    return $query;
+  }
+
+  protected function _addSortQuery($query) {
+    if (array(null, null) == ($sort = $this->_getSort())) {
+      return;
+    }
+
+    $query->addOrderBy($sort[0] . ' ' . $sort[1]);
+  }
+
+  protected function _getSort() {
+    if (!is_null($sort = $this->getUser()->getAttribute('user.sort', null))) {
+      return $sort;
+    }
+
+    $this->_setSort(array(null, null));
+
+    return $this->getUser()->getAttribute('user.sort', null);
+  }
+
+  protected function _setSort(array $sort) {
+    if (!is_null($sort[0]) && is_null($sort[1])) {
+      $sort[1] = 'asc';
+    }
+
+    $this->getUser()->setAttribute('user.sort', $sort);
   }
 }

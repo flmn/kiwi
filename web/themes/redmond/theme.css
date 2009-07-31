@@ -90,3 +90,7 @@ td.key {
 table {
   border: 1px groove #BBBBBB;
 }
+
+img {
+  vertical-align: bottom;
+}

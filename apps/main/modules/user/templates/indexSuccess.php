@@ -5,14 +5,100 @@
 <div>
   <h3><?php echo __('Users') ?></h3>
   <hr/>
+  <?php if ($filters->hasGlobalErrors()): ?>
+    <?php echo $filters->renderGlobalErrors() ?>
+  <?php endif; ?>
+  <form action="<?php echo url_for('user_collection', array('action' => 'filter')) ?>" method="post">
+    <table cellspacing="0">
+      <thead>
+        <tr>
+          <th colspan="4"><?php echo __('Filter') ?></th>
+        </tr>
+      </thead>
+      <tfoot>
+        <tr>
+          <td colspan="4">
+            <?php echo $filters->renderHiddenFields() ?>
+            <?php echo link_to(__('Reset', array(), 'sf_admin'), 'user_collection', array('action' => 'filter'), array('query_string' => '_reset', 'method' => 'post')) ?>
+            <input type="submit" value="<?php echo __('Filter', array(), 'sf_admin') ?>" />
+          </td>
+        </tr>
+      </tfoot>
+      <tbody>
+        <tr>
+          <td>
+            <?php echo $filters['display_name']->renderLabel()  ?>
+          </td>
+          <td>
+            <?php echo $filters['display_name']->render() ?>
+          </td>
+          <td>
+            <?php echo $filters['is_active']->renderLabel()  ?>
+          </td>
+          <td>
+            <?php echo $filters['is_active']->render() ?>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <?php echo $filters['email']->renderLabel()  ?>
+          </td>
+          <td>
+            <?php echo $filters['email']->render() ?>
+          </td>
+          <td>
+            <?php echo $filters['is_admin']->renderLabel()  ?>
+          </td>
+          <td>
+            <?php echo $filters['is_admin']->render() ?>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
   <table>
     <thead>
       <tr>
-        <th><?php echo __('Display name') ?></th>
-        <th><?php echo __('Email') ?></th>
-        <th><?php echo __('Active') ?></th>
-        <th><?php echo __('Admin') ?></th>
-        <th><?php echo __('Last login') ?></th>
+        <th>
+          <?php include_partial('common/list_title', array(
+              'sort'   => $sort,
+              'column' => 'display_name',
+              'title'  => 'Display name',
+              'module' => 'user',
+              )) ?>
+        </th>
+        <th>
+          <?php include_partial('common/list_title', array(
+              'sort'   => $sort,
+              'column' => 'email',
+              'title'  => 'Email',
+              'module' => 'user',
+              )) ?>
+        </th>
+        <th>
+          <?php include_partial('common/list_title', array(
+              'sort'   => $sort,
+              'column' => 'is_active',
+              'title'  => 'Active',
+              'module' => 'user',
+              )) ?>
+        </th>
+        <th>
+          <?php include_partial('common/list_title', array(
+              'sort'   => $sort,
+              'column' => 'is_admin',
+              'title'  => 'Admin',
+              'module' => 'user',
+              )) ?>
+        </th>
+        <th>
+          <?php include_partial('common/list_title', array(
+              'sort'   => $sort,
+              'column' => 'last_login_at',
+              'title'  => 'Last login',
+              'module' => 'user',
+              )) ?>
+        </th>
       </tr>
     </thead>
     <tfoot>

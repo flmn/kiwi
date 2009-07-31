@@ -11,5 +11,7 @@ class UserFormFilter extends BaseUserFormFilter
 {
   public function configure()
   {
+    $this->widgetSchema['email']->setOption('template', '%input%');
+    $this->widgetSchema['display_name']->setOption('template', '%input%');
   }
 }
