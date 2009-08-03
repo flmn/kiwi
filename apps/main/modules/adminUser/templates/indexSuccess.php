@@ -64,7 +64,7 @@
               'sort'   => $sort,
               'column' => 'display_name',
               'title'  => 'Display name',
-              'module' => 'user',
+              'route'  => 'user',
               )) ?>
         </th>
         <th>
@@ -72,7 +72,7 @@
               'sort'   => $sort,
               'column' => 'email',
               'title'  => 'Email',
-              'module' => 'user',
+              'route'  => 'user',
               )) ?>
         </th>
         <th>
@@ -80,7 +80,7 @@
               'sort'   => $sort,
               'column' => 'is_active',
               'title'  => 'Active',
-              'module' => 'user',
+              'route'  => 'user',
               )) ?>
         </th>
         <th>
@@ -88,7 +88,7 @@
               'sort'   => $sort,
               'column' => 'is_admin',
               'title'  => 'Admin',
-              'module' => 'user',
+              'route'  => 'user',
               )) ?>
         </th>
         <th>
@@ -96,7 +96,7 @@
               'sort'   => $sort,
               'column' => 'last_login_at',
               'title'  => 'Last login',
-              'module' => 'user',
+              'route'  => 'user',
               )) ?>
         </th>
       </tr>

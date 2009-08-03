@@ -9,33 +9,35 @@ class myUser extends sfBasicSecurityUser
     // initialize parent
     parent::initialize($dispatcher, $storage, $options);
 
-    $this->setAttribute('kiwi.theme', $this->getAttribute('kiwi.theme', sfConfig::get('sf_default_theme')));
+    $this->setAttribute('theme', $this->getAttribute('theme', sfConfig::get('sf_default_theme'), 'kiwi'), 'kiwi');
   }
 
   protected function _setAttributes($user) {
-    $this->setAttribute('kiwi.display_name', $user->getDisplayName());
-    $this->setAttribute('kiwi.theme', $user->getTheme());
+    $this->setAttribute('display_name', $user->getDisplayName(), 'kiwi');
+    $this->setAttribute('theme', $user->getTheme(), 'kiwi');
     $this->setCulture($user->getLanguage());
   }
 
   public function login($user) {
     $user->setLastLoginAt(date('Y-m-d H:i:s'));
     $user->save();
-    $this->setAttribute('kiwi.user_id', $user->getId());
+    $this->setAttribute('user_id', $user->getId(), 'kiwi');
     $this->_setAttributes($user);
     $this->setAuthenticated(true);
     $this->clearCredentials();
   }
 
   public function logout() {
+    $this->getAttributeHolder()->removeNamespace('kiwi');
+    $this->getAttributeHolder()->removeNamespace('kiwi.admin');
+    $this->user = null;
     $this->clearCredentials();
     $this->setAuthenticated(false);
-    $this->setAttribute('kiwi.theme', sfConfig::get('sf_default_theme'));
     $this->setCulture(sfConfig::get('sf_default_culture'));
   }
 
   public function getUserObject() {
-    if (!$this->user && $id = $this->getAttribute('kiwi.user_id', null)) {
+    if (!$this->user && $id = $this->getAttribute('user_id', null, 'kiwi')) {
       $this->user = Doctrine::getTable('User')->find($id);
 
       if (!$this->user) {
@@ -53,7 +55,7 @@ class myUser extends sfBasicSecurityUser
   }
 
   public function getThemeImage($img) {
-    $theme = $this->getAttribute('kiwi.theme', sfConfig::get('sf_default_theme'));
+    $theme = $this->getAttribute('theme', sfConfig::get('sf_default_theme'), 'kiwi');
     return '/themes/'.$theme.'/images/'.$img;
   }
 }

@@ -15,8 +15,8 @@
     <![endif]-->
     <link rel="stylesheet" href="/css/bp/screen.css" type="text/css" media="screen, projection" />
     <link rel="stylesheet" href="/css/symfony.css" type="text/css" media="screen, projection" />
-    <link rel="stylesheet" href="/themes/<?php echo $sf_user->getAttribute('kiwi.theme') ?>/jquery-ui.css" type="text/css" media="screen, projection" />
-    <link rel="stylesheet" href="/themes/<?php echo $sf_user->getAttribute('kiwi.theme') ?>/theme.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="/themes/<?php echo $sf_user->getAttribute('theme', sfConfig::get('sf_default_theme'), 'kiwi') ?>/jquery-ui.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="/themes/<?php echo $sf_user->getAttribute('theme', sfConfig::get('sf_default_theme'), 'kiwi') ?>/theme.css" type="text/css" media="screen, projection" />
   </head>
   <body>
     <?php echo $sf_content ?>

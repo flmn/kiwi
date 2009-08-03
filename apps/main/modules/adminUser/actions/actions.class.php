@@ -8,7 +8,7 @@
  * @author     Your name here
  * @version    SVN: $Id: actions.class.php 12479 2008-10-31 10:54:40Z fabien $
  */
-class userActions extends sfActions {
+class adminUserActions extends sfActions {
 /**
  * Executes index action
  *
@@ -90,11 +90,11 @@ class userActions extends sfActions {
   }
 
   protected function _getFilters() {
-    return $this->getUser()->getAttribute('user.filters', array());
+    return $this->getUser()->getAttribute('user.filters', array(), 'kiwi.admin');
   }
 
   protected function _setFilters(array $filters) {
-    return $this->getUser()->setAttribute('user.filters', $filters);
+    return $this->getUser()->setAttribute('user.filters', $filters, 'kiwi.admin');
   }
 
   protected function _getPager() {
@@ -107,11 +107,11 @@ class userActions extends sfActions {
   }
 
   protected function _setPage($page) {
-    $this->getUser()->setAttribute('user.page', $page);
+    $this->getUser()->setAttribute('user.page', $page, 'kiwi.admin');
   }
 
   protected function _getPage() {
-    return $this->getUser()->getAttribute('user.page', 1);
+    return $this->getUser()->getAttribute('user.page', 1, 'kiwi.admin');
   }
 
   protected function _buildQuery() {
@@ -135,13 +135,13 @@ class userActions extends sfActions {
   }
 
   protected function _getSort() {
-    if (!is_null($sort = $this->getUser()->getAttribute('user.sort', null))) {
+    if (!is_null($sort = $this->getUser()->getAttribute('user.sort', null, 'kiwi.admin'))) {
       return $sort;
     }
 
     $this->_setSort(array(null, null));
 
-    return $this->getUser()->getAttribute('user.sort', null);
+    return $this->getUser()->getAttribute('user.sort', null, 'kiwi.admin');
   }
 
   protected function _setSort(array $sort) {
@@ -149,6 +149,6 @@ class userActions extends sfActions {
       $sort[1] = 'asc';
     }
 
-    $this->getUser()->setAttribute('user.sort', $sort);
+    $this->getUser()->setAttribute('user.sort', $sort, 'kiwi.admin');
   }
 }

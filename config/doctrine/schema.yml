@@ -49,6 +49,7 @@ Project:
     Sluggable:
       fields:         [project_name]
       unique:         true
+    Timestampable:    ~
 
 #-------------------------------------------------------------------------------
 ProjectMember:

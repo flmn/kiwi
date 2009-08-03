@@ -15,8 +15,8 @@
     <![endif]-->
     <link rel="stylesheet" href="/css/bp/screen.css" type="text/css" media="screen, projection" />
     <link rel="stylesheet" href="/css/symfony.css" type="text/css" media="screen, projection" />
-    <link rel="stylesheet" href="/themes/<?php echo $sf_user->getAttribute('kiwi.theme') ?>/jquery-ui.css" type="text/css" media="screen, projection" />
-    <link rel="stylesheet" href="/themes/<?php echo $sf_user->getAttribute('kiwi.theme') ?>/theme.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="/themes/<?php echo $sf_user->getAttribute('theme', sfConfig::get('sf_default_theme'), 'kiwi') ?>/jquery-ui.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="/themes/<?php echo $sf_user->getAttribute('theme', sfConfig::get('sf_default_theme'), 'kiwi') ?>/theme.css" type="text/css" media="screen, projection" />
   </head>
   <body>
     <div id="north" class="ui-layout-north kiwi-panel">
@@ -26,7 +26,7 @@
         </div>
         <div id="tools">
           <div id="menu">
-            <?php echo __('Welcome') ?>, <?php echo $sf_user->getAttribute('kiwi.display_name') ?> [<?php echo link_to(__('Logout'), 'account/logout') ?>] |  <?php echo link_to(__('Profile'), 'account/profile') ?> |   <?php echo link_to(__('Admin'), 'admin/index') ?> |   <?php echo link_to(__('Help'), 'help/index') ?>
+            <?php echo __('Welcome') ?>, <?php echo $sf_user->getAttribute('display_name', 'User', 'kiwi') ?> [<?php echo link_to(__('Logout'), 'account/logout') ?>] |  <?php echo link_to(__('Profile'), 'account/profile') ?> |   <?php echo link_to(__('Admin'), 'admin/index') ?> |   <?php echo link_to(__('Help'), 'help/index') ?>
           </div>
           <div id="search">
             <form action="<?php echo url_for('home/index') ?>">
