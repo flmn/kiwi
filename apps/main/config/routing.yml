@@ -6,6 +6,29 @@ project_home:
   param:   { module: project, action: home }
 
 #-------------------------------------------------------------------------------
+calendar:
+  url:     /project/:project_id/calendar
+  param:   { module: calendar, action: index }
+
+#-------------------------------------------------------------------------------
+component:
+  url:     /project/:project_id/component
+  param:   { module: component, action: index }
+
+component_new:
+  url:     /project/:project_id/component/new
+  param:   { module: component, action: new }
+
+#-------------------------------------------------------------------------------
+milestone:
+  url:     /project/:project_id/milestone
+  param:   { module: milestone, action: index }
+
+milestone_new:
+  url:     /project/:project_id/milestone/new
+  param:   { module: milestone, action: new }
+
+#-------------------------------------------------------------------------------
 ticket:
   url:     /project/:project_id/ticket
   param:   { module: ticket, action: index }
