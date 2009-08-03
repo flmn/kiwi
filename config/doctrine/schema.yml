@@ -69,7 +69,7 @@ ProjectMember:
 Component:
   tableName:          component
   columns:
-    project_id:       { type: integer, notnull: true }
+    project_id:       { type: string(32), notnull: true }
     component_name:   { type: string(64), notnull: true, name: component_name as name }
     description:      { type: string(255) }
   relations:
@@ -77,7 +77,7 @@ Component:
       class:          Project
       foreignAlias:   Components
       local:          project_id
-      foreign:        id
+      foreign:        identifier
       type:           one
       foreignType:    many
   actAs:
@@ -89,7 +89,7 @@ Component:
 Milestone:
   tableName:          milestone
   columns:
-    project_id:       { type: integer, notnull: true }
+    project_id:       { type: string(32), notnull: true }
     milestone_name:   { type: string(64), notnull: true, name: milestone_name as name }
     due:              { type: date }
     description:      { type: string(255) }
@@ -98,7 +98,7 @@ Milestone:
       class:          Project
       foreignAlias:   Milestones
       local:          project_id
-      foreign:        id
+      foreign:        identifier
       type:           one
       foreignType:    many
 
@@ -106,7 +106,7 @@ Milestone:
 Ticket:
   tableName:          ticket
   columns:
-    project_id:       { type: integer, notnull: true }
+    project_id:       { type: string(32), notnull: true }
     component_id:     { type: integer, notnull: true }
     milestone_id:     { type: integer }
     author_id:        { type: integer, notnull: true }
@@ -118,7 +118,7 @@ Ticket:
       class:          Project
       foreignAlias:   Tickets
       local:          project_id
-      foreign:        id
+      foreign:        identifier
       type:           one
       foreignType:    many
     component:

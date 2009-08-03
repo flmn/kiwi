@@ -10,7 +10,7 @@
   <?php endif; ?>
   <hr/>
   <?php include_partial('common/flashes') ?>
-  <form action="<?php url_for('ticket_create', $project) ?>" method="post">
+  <form action="#" method="post">
   <?php echo $form->renderHiddenFields() ?>
   <p>
     <input type="submit" value="<?php echo __('Save', array(), 'sf_admin') ?>" />
@@ -26,6 +26,11 @@
       <?php include_partial('common/form_field', array(
           'form'       => $form,
           'name'       => 'subject',
+          'attributes' => array('class' => 'text'),
+          )) ?>
+      <?php include_partial('common/form_field', array(
+          'form'       => $form,
+          'name'       => 'description',
           'attributes' => array('class' => 'text'),
           )) ?>
     </tbody>

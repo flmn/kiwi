@@ -5,27 +5,23 @@ project_home:
   options: { model: Project, type: object }
   param:   { module: project, action: home }
 
+#-------------------------------------------------------------------------------
 ticket:
-  url:     /project/:identifier/ticket
-  class:   sfDoctrineRoute
-  options: { model: Project, type: object }
+  url:     /project/:project_id/ticket
   param:   { module: ticket, action: index }
-  requirements:
-    sf_method: [get]
 
 ticket_new:
-  url:     /project/:identifier/ticket/new
-  class:   sfDoctrineRoute
-  options: { model: Project, type: object }
+  url:     /project/:project_id/ticket/new
   param:   { module: ticket, action: new }
 
-ticket_create:
-  url:     /project/:identifier/ticket
-  class:   sfDoctrineRoute
-  options: { model: Project, type: object }
-  param:   { module: ticket, action: create }
-  requirements:
-    sf_method: [post]
+#-------------------------------------------------------------------------------
+login:
+  url:   /login
+  param: { module: account, action: login }
+
+logout:
+  url:   /logout
+  param: { module: account, action: logout }
 
 profile:
   url:   /profile
@@ -35,6 +31,7 @@ profile_edit:
   url:   /profile/edit
   param: { module: account, action: profileEdit }
 
+#-------------------------------------------------------------------------------
 user:
   class: sfDoctrineRouteCollection
   options:
@@ -53,18 +50,10 @@ project:
     column:               id
     with_wildcard_routes: true
 
-# default rules
+#-------------------------------------------------------------------------------
 homepage:
   url:   /
   param: { module: home, action: index }
-
-login:
-  url:   /login
-  param: { module: account, action: login }
-
-logout:
-  url:   /logout
-  param: { module: account, action: logout }
 
 default_index:
   url:   /:module

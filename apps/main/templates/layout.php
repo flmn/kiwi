@@ -22,7 +22,7 @@
     <div id="north" class="ui-layout-north kiwi-panel">
       <div id="header">
         <div id="logo">
-          <a href="<?php echo url_for('@homepage') ?>"><img alt="logo" src="/img/logo.png" /></a>
+          <a href="<?php echo url_for('homepage') ?>"><img alt="logo" src="/img/logo.png" /></a>
         </div>
         <div id="tools">
           <div id="menu">

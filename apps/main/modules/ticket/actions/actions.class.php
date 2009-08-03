@@ -15,7 +15,8 @@ class ticketActions extends sfActions {
  * @param sfRequest $request A request object
  */
   public function executeIndex(sfWebRequest $request) {
-    $this->project = $this->getRoute()->getObject();
+    $project_id = $request->getParameter('project_id');
+    $this->project = Doctrine::getTable('Project')->retrieveByIdentifier($project_id);
   }
 
   /**
@@ -24,13 +25,20 @@ class ticketActions extends sfActions {
    * @param sfRequest $request A request object
    */
   public function executeNew(sfWebRequest $request) {
-    $this->project = $this->getRoute()->getObject();
+    $project_id = $request->getParameter('project_id');
+    $this->project = Doctrine::getTable('Project')->retrieveByIdentifier($project_id);
     $this->form = new TicketForm();
-    $this->ticket = $this->form->getObject();
+    if ($request->isMethod('post')) {
+      $this->_processForm($request, $this->form);
+    }
     $this->setTemplate('form');
   }
 
-  public function executeCreate(sfWebRequest $request) {
-    
+  protected function _processForm(sfWebRequest $request, sfForm $form) {
+    $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
+    if ($form->isValid()) {
+       $ticket = $form->save();
+    }
+    //$this->ticket->setProjectId($request->getParameter('project_id'));
   }
 }
