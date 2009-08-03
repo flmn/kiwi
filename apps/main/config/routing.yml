@@ -5,6 +5,12 @@ project_home:
   options: { model: Project, type: object }
   param:   { module: project, action: home }
 
+ticket_list:
+  url:     /project/:identifier/ticket
+  class:   sfDoctrineRoute
+  options: { model: Project, type: object }
+  param:   { module: ticket, action: list }
+
 profile:
   url:   /profile
   param: { module: account, action: profile }

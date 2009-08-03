@@ -37,6 +37,7 @@
         </div>
         <div class="clear"></div>
       </div>
+      <?php include_slot('navigation') ?>
     </div>
 
     <div id="west" class="ui-layout-west kiwi-panel">
@@ -70,7 +71,7 @@
           fxName: "none"
         },
         north: {
-          size: 80
+          size: <?php if (has_slot('navigation')): echo '120'; else: echo '80'; endif; ?>
         },
         west: {
           size: 200
