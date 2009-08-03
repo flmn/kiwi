@@ -31,7 +31,7 @@ all:
       generate_shortest_url:            true
       extra_parameters_as_query_string: true
 
-#all:
+all:
 #  controller:
 #    class: sfFrontWebController
 #
@@ -58,10 +58,10 @@ all:
 #      charset:           %SF_CHARSET%
 #      send_http_headers: true
 #
-#  user:
-#    class: myUser
-#    param:
-#      timeout:         1800
+  user:
+    class: myUser
+    param:
+      timeout:         1800
 #      logging:         %SF_LOGGING_ENABLED%
 #      use_flash:       true
 #      default_culture: %SF_DEFAULT_CULTURE%
@@ -94,11 +94,11 @@ all:
 #          lifetime:                  31556926
 #          prefix:                    %SF_APP_DIR%/i18n
 #
-#  routing:
-#    class: sfPatternRouting
-#    param:
+  routing:
+    class: sfPatternRouting
+    param:
 #      load_configuration:               true
-#      suffix:                           ''
+      suffix:                           '.html'
 #      default_module:                   default
 #      default_action:                   index
 #      debug:                            %SF_DEBUG%

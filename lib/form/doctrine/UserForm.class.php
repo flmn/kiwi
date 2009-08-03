@@ -27,5 +27,10 @@ class UserForm extends BaseUserForm {
     $this->widgetSchema['theme'] = new sfWidgetFormChoice(array('choices' => sfConfig::get('sf_themes')));
 
     $this->mergePostValidator(new sfValidatorSchemaCompare('password_again', sfValidatorSchemaCompare::EQUAL, 'password', array(), array('invalid' => 'The two passwords must be the same.')));
+
+    $this->widgetSchema->setHelps(array(
+        'email'        => '255 characters maximum.',
+        'display_name' => 'Length between 1 and 16 characters.',
+    ));
   }
 }

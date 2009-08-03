@@ -30,7 +30,7 @@
           )) ?>
       <?php include_partial('common/form_field', array(
           'form'       => $form,
-          'name'       => 'slug',
+          'name'       => 'identifier',
           'attributes' => array('class' => 'text'),
           )) ?>
       <?php include_partial('common/form_field', array(

@@ -1,0 +1,11 @@
+Permission:
+  project_edit:
+    name:         project_edit
+    category:     project
+    display_name: Edit project
+
+  ticket_add:
+    name:         ticket_add
+    category:     ticket
+    display_name: Add tickets
+  

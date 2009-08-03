@@ -1,0 +1,10 @@
+Role:
+  manager:
+    name:        Manager
+    is_builtin:  true
+    permissions: project_edit,ticket_add
+    
+  developer:
+    name:        Developer
+    is_builtin:  true
+    permissions: ticket_add

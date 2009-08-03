@@ -81,6 +81,11 @@
   display: block;
 }
 
+.form-field-help {
+  font-style: italic;
+  color: #999999;
+}
+
 td.key {
   background: #C3D9FF none repeat scroll 0 0;
   text-align: right;

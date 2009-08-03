@@ -1,4 +1,12 @@
 
+profile:
+  url:   /profile
+  param: { module: account, action: profile }
+
+profile_edit:
+  url:   /profile/edit
+  param: { module: account, action: profileEdit }
+
 user:
   class: sfDoctrineRouteCollection
   options:

@@ -40,16 +40,13 @@ Permission:
 Project:
   tableName:          project
   columns:
+    identifier:       { type: string(32), notnull: true, unique: true }
     project_name:     { type: string(128), notnull: true, name: project_name as name }
+    description:      { type: string(255) }
     project_status:
       type:           enum
       values:         [potential, open, closed]
       default:        potential
-  actAs:
-    Sluggable:
-      fields:         [project_name]
-      unique:         true
-    Timestampable:    ~
 
 #-------------------------------------------------------------------------------
 ProjectMember:
