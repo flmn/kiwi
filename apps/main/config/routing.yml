@@ -3,8 +3,17 @@ user:
   class: sfDoctrineRouteCollection
   options:
     model:                User
-    module:               user
+    module:               adminUser
     prefix_path:          admin/user
+    column:               id
+    with_wildcard_routes: true
+
+project:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Project
+    module:               adminProject
+    prefix_path:          admin/project
     column:               id
     with_wildcard_routes: true
 
