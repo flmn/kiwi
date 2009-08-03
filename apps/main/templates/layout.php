@@ -37,13 +37,6 @@
         </div>
         <div class="clear"></div>
       </div>
-      <div id="navigation" class="ui-tabs ui-widget">
-        <ul class="ui-tabs-nav ui-helper-reset ui-helper-clearfix ui-widget-header">
-          <li class="ui-state-default <?php if ($sf_request->getParameter('module') == 'home'):echo 'ui-tabs-selected ui-state-active'; endif?>">
-            <?php echo link_to(__('Home'), 'home/index') ?>
-          </li>
-        </ul>
-      </div>
     </div>
 
     <div id="west" class="ui-layout-west kiwi-panel">
@@ -77,7 +70,7 @@
           fxName: "none"
         },
         north: {
-          size: 120
+          size: 80
         },
         west: {
           size: 200

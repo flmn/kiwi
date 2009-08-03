@@ -1,5 +1,2 @@
-all:
-  layout:         simpleLayout
-
 loginSuccess:
   layout:         cleanLayout

@@ -1,4 +1,10 @@
 
+project_home:
+  url:     /project/:identifier
+  class:   sfDoctrineRoute
+  options: { model: Project, type: object }
+  param:   { module: project, action: home }
+
 profile:
   url:   /profile
   param: { module: account, action: profile }

@@ -61,11 +61,12 @@
               'route'  => 'project',
               )) ?>
         </th>
+        <th><?php echo __('Actions') ?></th>
       </tr>
     </thead>
     <tfoot>
       <tr>
-        <th colspan="2">
+        <th colspan="3">
           <?php include_partial('common/pagination', array(
               'pager' => $pager,
               'route' => 'project',
@@ -80,6 +81,9 @@
             <?php echo link_to($project->getName(), 'project_edit', $project) ?>
         </td>
         <td><?php echo $project->getProjectStatus() ?></td>
+        <td>
+            <?php echo link_to(__('Home'), 'project_home', $project) ?>
+        </td>
       </tr>
       <?php endforeach; ?>
     </tbody>
