@@ -5,8 +5,8 @@
  *
  * @package    kiwi
  * @subpackage ticket
- * @author     Your name here
- * @version    SVN: $Id: actions.class.php 12479 2008-10-31 10:54:40Z fabien $
+ * @author     jitao
+ * @version
  */
 class ticketActions extends sfActions {
 /**
@@ -14,7 +14,23 @@ class ticketActions extends sfActions {
  *
  * @param sfRequest $request A request object
  */
-  public function executeList(sfWebRequest $request) {
+  public function executeIndex(sfWebRequest $request) {
     $this->project = $this->getRoute()->getObject();
+  }
+
+  /**
+   * Executes new action
+   *
+   * @param sfRequest $request A request object
+   */
+  public function executeNew(sfWebRequest $request) {
+    $this->project = $this->getRoute()->getObject();
+    $this->form = new TicketForm();
+    $this->ticket = $this->form->getObject();
+    $this->setTemplate('form');
+  }
+
+  public function executeCreate(sfWebRequest $request) {
+    
   }
 }

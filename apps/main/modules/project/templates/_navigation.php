@@ -4,7 +4,10 @@
       <?php echo link_to(__('Home'), 'project_home', $project) ?>
     </li>
     <li class="ui-state-default <?php if ($sf_request->getParameter('module') == 'ticket'):echo 'ui-tabs-selected ui-state-active'; endif?>">
-      <?php echo link_to(__('Tickets'), 'ticket_list', $project) ?>
+      <?php echo link_to(__('Tickets'), 'ticket', $project) ?>
+    </li>
+    <li class="ui-state-default">
+      <?php echo link_to(__('New Ticket'), 'ticket_new', $project) ?>
     </li>
   </ul>
 </div>

@@ -5,11 +5,27 @@ project_home:
   options: { model: Project, type: object }
   param:   { module: project, action: home }
 
-ticket_list:
+ticket:
   url:     /project/:identifier/ticket
   class:   sfDoctrineRoute
   options: { model: Project, type: object }
-  param:   { module: ticket, action: list }
+  param:   { module: ticket, action: index }
+  requirements:
+    sf_method: [get]
+
+ticket_new:
+  url:     /project/:identifier/ticket/new
+  class:   sfDoctrineRoute
+  options: { model: Project, type: object }
+  param:   { module: ticket, action: new }
+
+ticket_create:
+  url:     /project/:identifier/ticket
+  class:   sfDoctrineRoute
+  options: { model: Project, type: object }
+  param:   { module: ticket, action: create }
+  requirements:
+    sf_method: [post]
 
 profile:
   url:   /profile

@@ -4,9 +4,9 @@
  * user actions.
  *
  * @package    kiwi
- * @subpackage user
- * @author     Your name here
- * @version    SVN: $Id: actions.class.php 12479 2008-10-31 10:54:40Z fabien $
+ * @subpackage adminUser
+ * @author     jitao
+ * @version
  */
 class adminUserActions extends sfActions {
 /**
@@ -15,7 +15,7 @@ class adminUserActions extends sfActions {
  * @param sfRequest $request A request object
  */
   public function executeIndex(sfWebRequest $request) {
-    // sorting
+  // sorting
     if ($request->getParameter('sort')) {
       $this->_setSort(array($request->getParameter('sort'), $request->getParameter('sort_type')));
     }

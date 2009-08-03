@@ -4,9 +4,9 @@
  * project actions.
  *
  * @package    kiwi
- * @subpackage project
- * @author     Your name here
- * @version    SVN: $Id: actions.class.php 12479 2008-10-31 10:54:40Z fabien $
+ * @subpackage adminProject
+ * @author     jitao
+ * @version    
  */
 class adminProjectActions extends sfActions {
 /**
