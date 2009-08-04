@@ -15,5 +15,8 @@
     <li class="ui-state-default <?php if ($sf_request->getParameter('module') == 'ticket'):echo 'ui-tabs-selected ui-state-active'; endif?>">
       <?php echo link_to(__('Tickets'), 'ticket', array('project_id' => $project->getIdentifier())) ?>
     </li>
+    <li class="ui-state-default <?php if ($sf_request->getParameter('module') == 'settings'):echo 'ui-tabs-selected ui-state-active'; endif?>">
+      <?php echo link_to(__('Settings'), 'settings', array('project_id' => $project->getIdentifier())) ?>
+    </li>
   </ul>
 </div>

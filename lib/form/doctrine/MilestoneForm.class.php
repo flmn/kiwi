@@ -5,11 +5,15 @@
  *
  * @package    form
  * @subpackage Milestone
- * @version    SVN: $Id: sfDoctrineFormTemplate.php 6174 2007-11-27 06:22:40Z fabien $
+ * @version    
  */
-class MilestoneForm extends BaseMilestoneForm
-{
-  public function configure()
-  {
+class MilestoneForm extends BaseMilestoneForm {
+  public function configure() {
+    unset(
+        $this['created_at'],
+        $this['updated_at']
+    );
+
+    $this->widgetSchema['description'] = new sfWidgetFormTextarea();
   }
 }

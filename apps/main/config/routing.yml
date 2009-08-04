@@ -28,6 +28,10 @@ milestone_new:
   url:     /project/:project_id/milestone/new
   param:   { module: milestone, action: new }
 
+milestone_edit:
+  url:     /project/:project_id/milestone/:id/edit
+  param:   { module: milestone, action: edit }
+
 #-------------------------------------------------------------------------------
 ticket:
   url:     /project/:project_id/ticket
@@ -36,6 +40,11 @@ ticket:
 ticket_new:
   url:     /project/:project_id/ticket/new
   param:   { module: ticket, action: new }
+
+#-------------------------------------------------------------------------------
+settings:
+  url:     /project/:project_id/settings
+  param:   { module: settings, action: index }
 
 #-------------------------------------------------------------------------------
 login:

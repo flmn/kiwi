@@ -44,7 +44,7 @@
 }
 
 #login-form {
-  width: 400px;
+  width: 500px;
   margin: auto;
 }
 
@@ -84,6 +84,10 @@
 .form-field-help {
   font-style: italic;
   color: #999999;
+}
+
+table.progress td.closed {
+  background: #BAE0BA none repeat scroll 0 0;
 }
 
 td.key {

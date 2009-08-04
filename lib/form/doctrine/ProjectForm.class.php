@@ -5,7 +5,7 @@
  *
  * @package    form
  * @subpackage Project
- * @version    SVN: $Id: sfDoctrineFormTemplate.php 6174 2007-11-27 06:22:40Z fabien $
+ * @version
  */
 class ProjectForm extends BaseProjectForm {
   public function configure() {
@@ -22,7 +22,7 @@ class ProjectForm extends BaseProjectForm {
     $this->validatorSchema['identifier'] = new sfValidatorString(array('max_length' => 128));
 
     $this->widgetSchema->setHelps(array(
-        'id'          => 'Length between 1 and 32 characters. Only lower case letters (a-z), numbers and dashes are allowed. Once saved, the identifier can not be changed.',
+        'identifier'  => 'Length between 1 and 32 characters. Only lower case letters (a-z), numbers and dashes are allowed. Once saved, the identifier can not be changed.',
         'name'        => 'Length between 1 and 128 characters.',
         'description' => '255 characters maximum.',
     ));

@@ -6,7 +6,7 @@
   <h3><?php echo __('Edit Profile') ?></h3>
   <hr/>
   <?php include_partial('common/flashes') ?>
-  <form action="<?php echo url_for('account/profileEdit') ?>" method="post">
+  <form action="#" method="post">
     <p>
       <input type="submit" value="<?php echo __('Save', array(), 'sf_admin') ?>" />
     </p>
