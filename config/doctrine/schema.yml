@@ -128,6 +128,13 @@ Ticket:
       foreign:        id
       type:           one
       foreignType:    many
+    milestone:
+      class:          Milestone
+      foreignAlias:   Tickets
+      local:          milestone_id
+      foreign:        id
+      type:           one
+      foreignType:    many
     author:
       class:          User
       foreignAlias:   Tickets

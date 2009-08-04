@@ -1,6 +1,9 @@
 <?php slot('navigation') ?>
 <?php include_partial('project/navigation', array('project' => $project)) ?>
 <?php end_slot() ?>
+<?php slot('sidebar') ?>
+<?php include_partial('sidebar', array('project' => $project)) ?>
+<?php end_slot() ?>
 
 <div>
   <?php if ($form->isNew()): ?>
@@ -26,6 +29,16 @@
       <?php include_partial('common/form_field', array(
           'form'       => $form,
           'name'       => 'subject',
+          'attributes' => array('class' => 'text'),
+          )) ?>
+      <?php include_partial('common/form_field', array(
+          'form'       => $form,
+          'name'       => 'component_id',
+          'attributes' => array('class' => 'text'),
+          )) ?>
+      <?php include_partial('common/form_field', array(
+          'form'       => $form,
+          'name'       => 'milestone_id',
           'attributes' => array('class' => 'text'),
           )) ?>
       <?php include_partial('common/form_field', array(

@@ -5,11 +5,13 @@
  *
  * @package    form
  * @subpackage Ticket
- * @version    SVN: $Id: sfDoctrineFormTemplate.php 6174 2007-11-27 06:22:40Z fabien $
+ * @version
  */
-class TicketForm extends BaseTicketForm
-{
-  public function configure()
-  {
+class TicketForm extends BaseTicketForm {
+  public function configure() {
+    $this->widgetSchema->setLabels(array(
+        'component_id' => 'Component',
+        'milestone_id' => 'Milestone',
+    ));
   }
 }
