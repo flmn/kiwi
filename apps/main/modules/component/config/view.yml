@@ -1,0 +1,3 @@
+indexSuccess:
+  stylesheets:    [jquery.treetable.css]
+  javascripts:    [jquery.treetable.js]

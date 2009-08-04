@@ -26,7 +26,7 @@ class componentActions extends sfActions {
       $root->save();
       $componentTable->getTree()->createRoot($root);
     }
-    $this->components = Doctrine_Query::create()->from('Component c')->where('c.root_id = ?', $this->project['id'])->fetchArray();
+    $this->components = Doctrine_Query::create()->from('Component c')->where('c.root_id = ?', $this->project['id'])->addOrderBy('lft')->execute(array(), Doctrine::HYDRATE_RECORD);
   }
 
   /**
@@ -36,7 +36,7 @@ class componentActions extends sfActions {
    */
   public function executeNew(sfWebRequest $request) {
     $this->project = Doctrine::getTable('Project')->findOneByIdentifier($request->getParameter('project_id'));
-    $this->form = new ComponentForm();
+    $this->form = new ComponentForm($this->project);
 
     if ($request->isMethod('post')) {
       $this->_processForm($request, $this->form);
@@ -48,7 +48,7 @@ class componentActions extends sfActions {
   public function executeEdit(sfWebRequest $request) {
     $this->project = Doctrine::getTable('Project')->findOneByIdentifier($request->getParameter('project_id'));
     $this->component = Doctrine::getTable('Component')->find($request->getParameter('id'));
-    $this->form = new ComponentForm($this->component);
+    $this->form = new ComponentForm($this->project, $this->component);
 
     if ($request->isMethod('post')) {
       $this->_processForm($request, $this->form);

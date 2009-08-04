@@ -25,7 +25,7 @@ class ticketActions extends sfActions {
    */
   public function executeNew(sfWebRequest $request) {
     $this->project = Doctrine::getTable('Project')->findOneByIdentifier($request->getParameter('project_id'));
-    $this->form = new TicketForm();
+    $this->form = new TicketForm($this->project);
     if ($request->isMethod('post')) {
       $this->_processForm($request, $this->form);
     }
