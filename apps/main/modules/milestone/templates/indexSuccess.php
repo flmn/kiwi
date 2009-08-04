@@ -5,15 +5,18 @@
 <?php include_partial('sidebar', array('project' => $project)) ?>
 <?php end_slot() ?>
 
-<?php foreach ($pager->getResults() as $i => $milestone): ?>
+<?php if (!$pager->getNbResults()): ?>
+<p><?php echo __('No result', array(), 'sf_admin') ?></p>
+<?php else: ?>
+  <?php foreach ($pager->getResults() as $i => $milestone): ?>
 <table>
   <tbody>
     <tr>
-      <td><?php echo link_to($milestone->getName(), 'milestone_edit', array('project_id' => $project->getIdentifier(), 'id' => $milestone->getId())) ?></td>
+      <td><?php echo link_to($milestone['name'], 'milestone_edit', array('project_id' => $project['identifier'], 'id' => $milestone['id'])) ?></td>
     </tr>
     <tr>
       <td>
-          <?php echo $milestone->getDue() ?>
+            <?php echo $milestone['due'] ?>
       </td>
     </tr>
     <tr>
@@ -30,4 +33,5 @@
     </tr>
   </tbody>
 </table>
-<?php endforeach; ?>
+  <?php endforeach; ?>
+<?php endif; ?>

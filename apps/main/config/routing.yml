@@ -19,6 +19,10 @@ component_new:
   url:     /project/:project_id/component/new
   param:   { module: component, action: new }
 
+component_edit:
+  url:     /project/:project_id/component/:id/edit
+  param:   { module: component, action: edit }
+
 #-------------------------------------------------------------------------------
 milestone:
   url:     /project/:project_id/milestone

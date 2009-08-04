@@ -19,7 +19,7 @@
   <table>
     <thead>
       <tr>
-        <th colspan="3"><?php echo __('Info') ?></th>
+        <th colspan="3">&nbsp;</th>
       </tr>
     </thead>
     <tbody>

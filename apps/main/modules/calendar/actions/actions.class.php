@@ -15,7 +15,6 @@ class calendarActions extends sfActions {
  * @param sfRequest $request A request object
  */
   public function executeIndex(sfWebRequest $request) {
-    $project_id = $request->getParameter('project_id');
-    $this->project = Doctrine::getTable('Project')->retrieveByIdentifier($project_id);
+    $this->project = Doctrine::getTable('Project')->findOneByIdentifier($request->getParameter('project_id'));
   }
 }
