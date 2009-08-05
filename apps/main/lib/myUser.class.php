@@ -15,7 +15,7 @@ class myUser extends sfBasicSecurityUser
   protected function _setAttributes($user) {
     $this->setAttribute('display_name', $user['display_name'], 'kiwi');
     $this->setAttribute('theme', $user['theme'], 'kiwi');
-    $this->setCulture($user->getLanguage());
+    $this->setCulture($user['language']);
   }
 
   public function login($user) {

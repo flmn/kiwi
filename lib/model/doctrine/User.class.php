@@ -14,7 +14,7 @@ class User extends BaseUser {
   }
 
   public function checkPassword($password) {
-    $secret = $this->getPassword();
+    $secret = $this['password'];
     return $secret == $this->_encrypt(substr($secret, 41, 23), $password);
   }
 

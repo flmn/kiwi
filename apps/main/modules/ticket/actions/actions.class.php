@@ -67,7 +67,7 @@ class ticketActions extends sfActions {
       $success = $form->getObject()->isNew() ? 'The item was created successfully.' : 'The item was updated successfully.';
       $ticket = $form->save();
       $this->getUser()->setFlash('success', $success);
-      $this->redirect(array('sf_route' => 'ticket_edit', 'project_id' => $this->project->getIdentifier(), 'id' => $ticket->getId()));
+      $this->redirect(array('sf_route' => 'ticket_edit', 'project_id' => $this->project['identifier'], 'id' => $ticket['id']));
     }
   }
 

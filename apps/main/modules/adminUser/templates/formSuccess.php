@@ -6,7 +6,7 @@
   <?php if ($form->isNew()): ?>
   <h3><?php echo __('New User') ?></h3>
   <?php else: ?>
-  <h3><?php echo __('Edit User').': '.$user->getDisplayName() ?></h3>
+  <h3><?php echo __('Edit User').': '.$user['display_name'] ?></h3>
   <?php endif; ?>
   <hr/>
   <?php include_partial('common/flashes') ?>

@@ -6,7 +6,7 @@
   <?php if ($form->isNew()): ?>
   <h3><?php echo __('New Project') ?></h3>
   <?php else: ?>
-  <h3><?php echo __('Edit Project').': '.$project->getName() ?></h3>
+  <h3><?php echo __('Edit Project').': '.$project['name'] ?></h3>
   <?php endif; ?>
   <hr/>
   <?php include_partial('common/flashes') ?>

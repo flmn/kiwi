@@ -9,7 +9,7 @@
   <?php if ($form->isNew()): ?>
   <h3><?php echo __('New Ticket') ?></h3>
   <?php else: ?>
-  <h3><?php echo __('Edit Ticket').': '.$ticket->getSubject() ?></h3>
+  <h3><?php echo __('Edit Ticket').': '.$ticket['subject'] ?></h3>
   <?php endif; ?>
   <hr/>
   <?php include_partial('common/flashes') ?>

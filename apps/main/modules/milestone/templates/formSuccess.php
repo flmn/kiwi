@@ -9,7 +9,7 @@
   <?php if ($form->isNew()): ?>
   <h3><?php echo __('New Milestone') ?></h3>
   <?php else: ?>
-  <h3><?php echo __('Edit Milestone').': '.$milestone->getName() ?></h3>
+  <h3><?php echo __('Edit Milestone').': '.$milestone['name'] ?></h3>
   <?php endif; ?>
   <hr/>
   <?php include_partial('common/flashes') ?>

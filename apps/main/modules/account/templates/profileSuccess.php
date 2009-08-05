@@ -14,19 +14,19 @@
     <tbody>
       <tr>
         <td class="key"><?php echo __('Email') ?></td>
-        <td><?php echo $user->getEmail() ?></td>
+        <td><?php echo $user['email'] ?></td>
       </tr>
       <tr>
         <td class="key"><?php echo __('Display name') ?></td>
-        <td><?php echo $user->getDisplayName() ?></td>
+        <td><?php echo $user['display_name'] ?></td>
       </tr>
       <tr>
         <td class="key"><?php echo __('Language') ?></td>
-        <td><?php echo $cultures[$user->getLanguage()]; ?></td>
+        <td><?php echo $cultures[$user['language']]; ?></td>
       </tr>
       <tr>
         <td class="key"><?php echo __('Theme') ?></td>
-        <td><?php echo $themes[$user->getTheme()]; ?></td>
+        <td><?php echo $themes[$user['theme']]; ?></td>
       </tr>
     </tbody>
   </table>

@@ -58,13 +58,13 @@ class componentActions extends sfActions {
   }
 
   protected function _processForm(sfWebRequest $request, sfForm $form) {
-    $parameters = array_merge($request->getParameter($form->getName()), array('project_id' => $this->project->getId()));
+    $parameters = array_merge($request->getParameter($form->getName()), array('project_id' => $this->project['id']));
     $form->bind($parameters, $request->getFiles($form->getName()));
     if ($form->isValid()) {
       $success = $form->getObject()->isNew() ? 'The item was created successfully.' : 'The item was updated successfully.';
       $component = $form->save();
       $this->getUser()->setFlash('success', $success);
-      $this->redirect(array('sf_route' => 'component_edit', 'project_id' => $this->project->getIdentifier(), 'id' => $component->getId()));
+      $this->redirect(array('sf_route' => 'component_edit', 'project_id' => $this->project['identifier'], 'id' => $component['id']));
     }
   }
 }

@@ -78,9 +78,9 @@
       <?php foreach ($pager->getResults() as $i => $project): ?>
       <tr class="<?php echo fmod($i, 2) ? 'even' : 'odd' ?>">
         <td>
-            <?php echo link_to($project->getName(), 'project_edit', $project) ?>
+            <?php echo link_to($project['name'], 'project_edit', $project) ?>
         </td>
-        <td><?php echo $project->getProjectStatus() ?></td>
+        <td><?php echo $project['project_status'] ?></td>
         <td>
             <?php echo link_to(__('Home'), 'project_home', $project) ?>
         </td>

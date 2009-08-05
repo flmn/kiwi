@@ -115,12 +115,12 @@
       <?php foreach ($pager->getResults() as $i => $user): ?>
       <tr class="<?php echo fmod($i, 2) ? 'even' : 'odd' ?>">
         <td>
-            <?php echo link_to($user->getDisplayName(), 'user_edit', $user) ?>
+            <?php echo link_to($user['display_name'], 'user_edit', $user) ?>
         </td>
-        <td><?php echo $user->getEmail() ?></td>
-        <td><?php echo $user->getIsActive() ?></td>
-        <td><?php echo $user->getIsAdmin() ?></td>
-        <td><?php echo $user->getLastLoginAt() ?></td>
+        <td><?php echo $user['email'] ?></td>
+        <td><?php echo $user['is_active'] ?></td>
+        <td><?php echo $user['is_admin'] ?></td>
+        <td><?php echo $user['last_login_at'] ?></td>
       </tr>
       <?php endforeach; ?>
     </tbody>

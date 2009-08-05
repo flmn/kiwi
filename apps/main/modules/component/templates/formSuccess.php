@@ -9,7 +9,7 @@
   <?php if ($form->isNew()): ?>
   <h3><?php echo __('New Component') ?></h3>
   <?php else: ?>
-  <h3><?php echo __('Edit Component').': '.$component->getName() ?></h3>
+  <h3><?php echo __('Edit Component').': '.$component['name'] ?></h3>
   <?php endif; ?>
   <hr/>
   <?php include_partial('common/flashes') ?>

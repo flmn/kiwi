@@ -4,19 +4,19 @@
       <?php echo link_to(__('Home'), 'project_home', $project) ?>
     </li>
     <li class="ui-state-default <?php if ($sf_request->getParameter('module') == 'calendar'):echo 'ui-tabs-selected ui-state-active'; endif?>">
-      <?php echo link_to(__('Calendar'), 'calendar', array('project_id' => $project->getIdentifier())) ?>
+      <?php echo link_to(__('Calendar'), 'calendar', array('project_id' => $project['identifier'])) ?>
     </li>
     <li class="ui-state-default <?php if ($sf_request->getParameter('module') == 'component'):echo 'ui-tabs-selected ui-state-active'; endif?>">
-      <?php echo link_to(__('Components'), 'component', array('project_id' => $project->getIdentifier())) ?>
+      <?php echo link_to(__('Components'), 'component', array('project_id' => $project['identifier'])) ?>
     </li>
     <li class="ui-state-default <?php if ($sf_request->getParameter('module') == 'milestone'):echo 'ui-tabs-selected ui-state-active'; endif?>">
-      <?php echo link_to(__('Milestones'), 'milestone', array('project_id' => $project->getIdentifier())) ?>
+      <?php echo link_to(__('Milestones'), 'milestone', array('project_id' => $project['identifier'])) ?>
     </li>
     <li class="ui-state-default <?php if ($sf_request->getParameter('module') == 'ticket'):echo 'ui-tabs-selected ui-state-active'; endif?>">
-      <?php echo link_to(__('Tickets'), 'ticket', array('project_id' => $project->getIdentifier())) ?>
+      <?php echo link_to(__('Tickets'), 'ticket', array('project_id' => $project['identifier'])) ?>
     </li>
     <li class="ui-state-default <?php if ($sf_request->getParameter('module') == 'settings'):echo 'ui-tabs-selected ui-state-active'; endif?>">
-      <?php echo link_to(__('Settings'), 'settings', array('project_id' => $project->getIdentifier())) ?>
+      <?php echo link_to(__('Settings'), 'settings', array('project_id' => $project['identifier'])) ?>
     </li>
   </ul>
 </div>

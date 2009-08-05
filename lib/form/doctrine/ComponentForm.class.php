@@ -25,6 +25,8 @@ class ComponentForm extends BaseComponentForm {
         $this['level']
     );
 
+    $this->widgetSchema['description'] = new sfWidgetFormTextarea();
+
     $this->widgetSchema['parent_id'] = new sfWidgetFormDoctrineChoice(array(
         'model'    => 'Component',
         'order_by' => array('lft', ''),
