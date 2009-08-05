@@ -45,6 +45,10 @@ ticket_new:
   url:     /project/:project_id/ticket/new
   param:   { module: ticket, action: new }
 
+ticket_edit:
+  url:     /project/:project_id/ticket/:id/edit
+  param:   { module: ticket, action: edit }
+
 #-------------------------------------------------------------------------------
 settings:
   url:     /project/:project_id/settings

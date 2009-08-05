@@ -46,10 +46,6 @@ class ComponentForm extends BaseComponentForm {
     $this->parentId = $parentId;
   }
 
-  public function setProject($project) {
-    ;
-  }
-
   protected function doSave($con = null) {
     parent::doSave($con);
     $node = $this->object->getNode();

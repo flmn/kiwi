@@ -4,3 +4,34 @@
 <?php slot('sidebar') ?>
 <?php include_partial('sidebar', array('project' => $project)) ?>
 <?php end_slot() ?>
+
+<div>
+  <h3><?php echo __('Tickets') ?></h3>
+  <hr/>
+  <table>
+    <thead>
+      <tr>
+        <th>subject</th>
+      </tr>
+    </thead>
+    <tfoot>
+      <tr>
+        <th>
+          <?php include_partial('common/pagination', array(
+              'pager' => $pager,
+              'route' => 'ticket',
+              )) ?>
+        </th>
+      </tr>
+    </tfoot>
+    <tbody>
+      <?php foreach ($pager->getResults() as $i => $ticket): ?>
+      <tr class="<?php echo fmod($i, 2) ? 'even' : 'odd' ?>">
+        <td>
+            <?php echo link_to($ticket['subject'], 'ticket_edit', array('project_id' => $project['identifier'], 'id' => $ticket['id'])) ?>
+        </td>
+      </tr>
+      <?php endforeach; ?>
+    </tbody>
+  </table>
+</div>

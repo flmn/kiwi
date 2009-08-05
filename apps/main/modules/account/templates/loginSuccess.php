@@ -15,11 +15,11 @@
           <td><?php echo $form['password']->render(array('class' => 'text')) ?></td>
           <td><?php if ($form['password']->hasError()): echo $form['password']->renderError(); endif; ?></td>
         </tr>
-        <tr>
-          <td style="text-align: right;width: 15em;"><?php echo $form['captcha']->renderLabel() ?></td>
-          <td><?php echo $form['captcha']->render(array('class' => 'text')) ?></td>
-          <td><?php if ($form['captcha']->hasError()): echo $form['captcha']->renderError(); endif; ?></td>
-        </tr>
+        <!--tr>
+          <td style="text-align: right;width: 15em;"><?php //echo $form['captcha']->renderLabel() ?></td>
+          <td><?php //echo $form['captcha']->render(array('class' => 'text')) ?></td>
+          <td><?php //if ($form['captcha']->hasError()): echo $form['captcha']->renderError(); endif; ?></td>
+        </tr-->
       </table>
       <hr/>
       <p>

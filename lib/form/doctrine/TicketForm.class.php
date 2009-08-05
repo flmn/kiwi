@@ -17,11 +17,22 @@ class TicketForm extends BaseTicketForm {
   }
 
   public function configure() {
+    unset(
+        $this['created_at'],
+        $this['updated_at']
+    );
+
     $this->widgetSchema['component_id'] = new sfWidgetFormDoctrineChoice(array(
         'model'    => 'Component',
         'order_by' => array('lft', ''),
         'query'    => Doctrine_Query::create()->from('Component c')->where('c.root_id = ?', $this->project['id']),
         'method'   => 'getIndentedName',
+    ));
+
+    $this->widgetSchema['milestone_id'] = new sfWidgetFormDoctrineChoice(array(
+        'model'    => 'Milestone',
+        'add_empty' => true,
+        'query'    => Doctrine_Query::create()->from('Milestone m')->where('m.project_id = ?', $this->project['id']),
     ));
 
     $this->widgetSchema->setLabels(array(

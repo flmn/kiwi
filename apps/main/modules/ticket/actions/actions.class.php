@@ -16,6 +16,12 @@ class ticketActions extends sfActions {
  */
   public function executeIndex(sfWebRequest $request) {
     $this->project = Doctrine::getTable('Project')->findOneByIdentifier($request->getParameter('project_id'));
+    // pager
+    if ($request->getParameter('page')) {
+      $this->_setPage($request->getParameter('page'));
+    }
+
+    $this->pager = $this->_getPager();
   }
 
   /**
@@ -32,11 +38,53 @@ class ticketActions extends sfActions {
     $this->setTemplate('form');
   }
 
-  protected function _processForm(sfWebRequest $request, sfForm $form) {
-    $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
-    if ($form->isValid()) {
-       $ticket = $form->save();
+  public function executeEdit(sfWebRequest $request) {
+    $this->project = Doctrine::getTable('Project')->findOneByIdentifier($request->getParameter('project_id'));
+    $this->ticket = Doctrine::getTable('Ticket')->find($request->getParameter('id'));
+    $this->form = new TicketForm($this->project, $this->ticket);
+
+    if ($request->isMethod('post')) {
+      $this->_processForm($request, $this->form);
     }
-    //$this->ticket->setProjectId($request->getParameter('project_id'));
+
+    $this->setTemplate('form');
+  }
+
+  protected function _processForm(sfWebRequest $request, sfForm $form) {
+    $extras = array(
+        'project_id' => $this->project->getId(),
+        'author_id' => $this->getUser()->getUserObject()->getId(),
+    );
+    $parameters = array_merge($request->getParameter($form->getName()), $extras);
+    $form->bind($parameters, $request->getFiles($form->getName()));
+    if ($form->isValid()) {
+      $success = $form->getObject()->isNew() ? 'The item was created successfully.' : 'The item was updated successfully.';
+      $ticket = $form->save();
+      $this->getUser()->setFlash('success', $success);
+      $this->redirect(array('sf_route' => 'ticket_edit', 'project_id' => $this->project->getIdentifier(), 'id' => $ticket->getId()));
+    }
+  }
+
+  protected function _getPager() {
+    $pager = new sfDoctrinePager('Ticket', 20);
+    $pager->setQuery($this->_buildQuery());
+    $pager->setPage($this->_getPage());
+    $pager->init();
+
+    return $pager;
+  }
+
+  protected function _setPage($page) {
+    $this->getUser()->setAttribute('ticket.page', $page, 'kiwi');
+  }
+
+  protected function _getPage() {
+    return $this->getUser()->getAttribute('ticket.page', 1, 'kiwi');
+  }
+
+  protected function _buildQuery() {
+    $query = Doctrine_Query::create()->from('Ticket t');
+
+    return $query;
   }
 }

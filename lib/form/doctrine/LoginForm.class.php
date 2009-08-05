@@ -5,13 +5,13 @@ class LoginForm extends sfForm {
     $this->setWidgets(array(
         'email'    => new sfWidgetFormInput(),
         'password' => new sfWidgetFormInputPassword(),
-        'captcha'  => new sfWidgetCaptchaGD(),
+        //'captcha'  => new sfWidgetCaptchaGD(),
     ));
 
     $this->setValidators(array(
         'email'    => new sfValidatorEmail(),
         'password' => new sfValidatorString(),
-        'captcha'  => new sfCaptchaGDValidator(),
+        //'captcha'  => new sfCaptchaGDValidator(),
     ));
 
     $this->validatorSchema->setPostValidator(new LoginValidator());

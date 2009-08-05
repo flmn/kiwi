@@ -5,7 +5,7 @@
  *
  * @package    form
  * @subpackage Milestone
- * @version    
+ * @version
  */
 class MilestoneForm extends BaseMilestoneForm {
   public function configure() {

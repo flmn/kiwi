@@ -86,6 +86,10 @@
   color: #999999;
 }
 
+table.progress td {
+  height: 1em;
+}
+
 table.progress td.closed {
   background: #BAE0BA none repeat scroll 0 0;
 }

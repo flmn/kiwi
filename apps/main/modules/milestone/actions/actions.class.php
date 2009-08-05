@@ -36,7 +36,7 @@ class milestoneActions extends sfActions {
     if ($request->isMethod('post')) {
       $this->_processForm($request, $this->form);
     }
-    
+
     $this->setTemplate('form');
   }
 
@@ -53,13 +53,13 @@ class milestoneActions extends sfActions {
   }
 
   protected function _processForm(sfWebRequest $request, sfForm $form) {
-    $parameters = array_merge($request->getParameter($form->getName()), array('project_id' => $this->project->getId()));
+    $parameters = array_merge($request->getParameter($form->getName()), array('project_id' => $this->project['id']));
     $form->bind($parameters, $request->getFiles($form->getName()));
     if ($form->isValid()) {
       $success = $form->getObject()->isNew() ? 'The item was created successfully.' : 'The item was updated successfully.';
       $milestone = $form->save();
       $this->getUser()->setFlash('success', $success);
-      $this->redirect(array('sf_route' => 'milestone_edit', 'project_id' => $this->project->getIdentifier(), 'id' => $milestone->getId()));
+      $this->redirect(array('sf_route' => 'milestone_edit', 'project_id' => $this->project['identifier'], 'id' => $milestone['id']));
     }
   }
 
@@ -93,7 +93,8 @@ class milestoneActions extends sfActions {
       $this->filters = new MilestoneFormFilter($this->_getFilters(), array());
     }
     $this->filters->setTableMethod('');
-    $query = $this->filters->buildQuery($this->_getFilters());
+    $values = array_merge($this->_getFilters(), array('project_id' => $this->project['id']));
+    $query = $this->filters->buildQuery($values);
 
     return $query;
   }
