@@ -24,6 +24,11 @@ class ticketActions extends sfActions {
     $this->pager = $this->_getPager();
   }
 
+  public function executeShow(sfWebRequest $request) {
+    $this->project = Doctrine::getTable('Project')->findOneByIdentifier($request->getParameter('project_id'));
+    $this->ticket = Doctrine::getTable('Ticket')->find($request->getParameter('id'));
+  }
+
   /**
    * Executes new action
    *
@@ -35,6 +40,7 @@ class ticketActions extends sfActions {
     if ($request->isMethod('post')) {
       $this->_processForm($request, $this->form);
     }
+
     $this->setTemplate('form');
   }
 

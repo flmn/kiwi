@@ -13,15 +13,15 @@ class myUser extends sfBasicSecurityUser
   }
 
   protected function _setAttributes($user) {
-    $this->setAttribute('display_name', $user->getDisplayName(), 'kiwi');
-    $this->setAttribute('theme', $user->getTheme(), 'kiwi');
+    $this->setAttribute('display_name', $user['display_name'], 'kiwi');
+    $this->setAttribute('theme', $user['theme'], 'kiwi');
     $this->setCulture($user->getLanguage());
   }
 
   public function login($user) {
     $user->setLastLoginAt(date('Y-m-d H:i:s'));
     $user->save();
-    $this->setAttribute('user_id', $user->getId(), 'kiwi');
+    $this->setAttribute('user_id', $user['id'], 'kiwi');
     $this->_setAttributes($user);
     $this->setAuthenticated(true);
     $this->clearCredentials();

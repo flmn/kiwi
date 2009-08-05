@@ -11,12 +11,13 @@
   <table>
     <thead>
       <tr>
+        <th>Ticket</th>
         <th>subject</th>
       </tr>
     </thead>
     <tfoot>
       <tr>
-        <th>
+        <th colspan="2">
           <?php include_partial('common/pagination', array(
               'pager' => $pager,
               'route' => 'ticket',
@@ -28,7 +29,10 @@
       <?php foreach ($pager->getResults() as $i => $ticket): ?>
       <tr class="<?php echo fmod($i, 2) ? 'even' : 'odd' ?>">
         <td>
-            <?php echo link_to($ticket['subject'], 'ticket_edit', array('project_id' => $project['identifier'], 'id' => $ticket['id'])) ?>
+            <?php echo link_to('#'.$ticket['ticket_number'], 'ticket_show', array('project_id' => $project['identifier'], 'id' => $ticket['id'])) ?>
+        </td>
+        <td>
+            <?php echo link_to($ticket['subject'], 'ticket_show', array('project_id' => $project['identifier'], 'id' => $ticket['id'])) ?>
         </td>
       </tr>
       <?php endforeach; ?>

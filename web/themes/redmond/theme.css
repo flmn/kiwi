@@ -1,3 +1,6 @@
+
+/* layout */
+
 #header {
   background-color: white;
 }
@@ -43,6 +46,8 @@
 #center {
 }
 
+/* login */
+
 #login-form {
   width: 500px;
   margin: auto;
@@ -62,6 +67,32 @@
   background: transparent url(images/captcha.png) no-repeat scroll;
   padding-left: 24px;
   width: 100px;
+}
+
+/* ticket */
+
+#ticket {
+  background: #FFFFDD none repeat scroll 0 0;
+  border: 1px groove #BBBBBB;
+  padding: 0.5em 1em;
+}
+
+#ticket table.properties {
+  border-collapse: collapse;
+  border: 0;
+  border-top: 1px solid #DDDD99;
+}
+
+#ticket table.properties tr {
+  border-bottom: 1px dotted #EEEEDD;
+}
+
+#ticket table.properties th {
+  width: 20%;
+}
+
+#ticket table.properties td {
+  width: 30%;
 }
 
 .kiwi-panel {

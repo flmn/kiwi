@@ -12,42 +12,50 @@ calendar:
 
 #-------------------------------------------------------------------------------
 component:
-  url:     /project/:project_id/component
-  param:   { module: component, action: index }
+  url:          /project/:project_id/component
+  param:        { module: component, action: index }
 
 component_new:
-  url:     /project/:project_id/component/new
-  param:   { module: component, action: new }
+  url:          /project/:project_id/component/new
+  param:        { module: component, action: new }
 
 component_edit:
-  url:     /project/:project_id/component/:id/edit
-  param:   { module: component, action: edit }
+  url:          /project/:project_id/component/:id/edit
+  param:        { module: component, action: edit }
+  requirements: { id: \d+ }
 
 #-------------------------------------------------------------------------------
 milestone:
-  url:     /project/:project_id/milestone
-  param:   { module: milestone, action: index }
+  url:          /project/:project_id/milestone
+  param:        { module: milestone, action: index }
 
 milestone_new:
-  url:     /project/:project_id/milestone/new
-  param:   { module: milestone, action: new }
+  url:          /project/:project_id/milestone/new
+  param:        { module: milestone, action: new }
 
 milestone_edit:
-  url:     /project/:project_id/milestone/:id/edit
-  param:   { module: milestone, action: edit }
+  url:          /project/:project_id/milestone/:id/edit
+  param:        { module: milestone, action: edit }
+  requirements: { id: \d+ }
 
 #-------------------------------------------------------------------------------
 ticket:
-  url:     /project/:project_id/ticket
-  param:   { module: ticket, action: index }
+  url:          /project/:project_id/ticket
+  param:        { module: ticket, action: index }
+
+ticket_show:
+  url:          /project/:project_id/ticket/:id
+  param:        { module: ticket, action: show }
+  requirements: { id: \d+ }
 
 ticket_new:
-  url:     /project/:project_id/ticket/new
-  param:   { module: ticket, action: new }
+  url:          /project/:project_id/ticket/new
+  param:        { module: ticket, action: new }
 
 ticket_edit:
-  url:     /project/:project_id/ticket/:id/edit
-  param:   { module: ticket, action: edit }
+  url:          /project/:project_id/ticket/:id/edit
+  param:        { module: ticket, action: edit }
+  requirements: { id: \d+ }
 
 #-------------------------------------------------------------------------------
 settings:

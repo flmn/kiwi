@@ -1,0 +1,21 @@
+TicketPriority:
+  low:
+    name:       Low
+    position:   1
+
+  normal:
+    name:       Normal
+    is_default: true
+    position:   2
+
+  high:
+    name:       High
+    position:   3
+
+  urgent:
+    name:       Urgent
+    position:   4
+
+  immediate:
+    name:       Immediate
+    position:   5

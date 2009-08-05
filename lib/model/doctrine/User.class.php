@@ -17,4 +17,8 @@ class User extends BaseUser {
     $secret = $this->getPassword();
     return $secret == $this->_encrypt(substr($secret, 41, 23), $password);
   }
+
+  public function __toString() {
+    return $this['display_name'].'';
+  }
 }

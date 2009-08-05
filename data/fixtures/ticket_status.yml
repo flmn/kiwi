@@ -1,0 +1,21 @@
+TicketStatus:
+  new:
+    name:       New
+    is_default: true
+    position:   1
+    
+  assigned:
+    name:       Assigned
+    position:   2
+
+  resolved:
+    name:       Resolved
+    position:   3
+
+  closed:
+    name:       Closed
+    position:   4
+
+  rejected:
+    name:       Rejected
+    position:   5

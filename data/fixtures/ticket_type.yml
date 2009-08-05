@@ -1,0 +1,9 @@
+TicketType:
+  feature:
+    name:       Feature
+    is_default: true
+    position:   1
+
+  bug:
+    name:       Bug
+    position:   2

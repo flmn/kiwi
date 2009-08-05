@@ -47,6 +47,7 @@ Project:
       type:           enum
       values:         [potential, open, closed]
       default:        potential
+    tickets_count:    { type: integer, default: 0 }
 
 #-------------------------------------------------------------------------------
 ProjectMember:
@@ -106,6 +107,7 @@ Milestone:
 Ticket:
   tableName:          ticket
   columns:
+    ticket_number:    { type: integer, notnull: true }
     project_id:       { type: integer, notnull: true }
     component_id:     { type: integer, notnull: true }
     milestone_id:     { type: integer }
@@ -113,6 +115,9 @@ Ticket:
     assigned_to_id:   { type: integer }
     subject:          { type: string(255), notnull: true }
     description:      { type: clob(65532) }
+    type_id:          { type: integer, notnull: true }
+    priority_id:      { type: integer, notnull: true }
+    status_id:        { type: integer, notnull: true }
   relations:
     project:
       class:          Project
@@ -142,9 +147,58 @@ Ticket:
       foreign:        id
       type:           one
       foreignType:    many
+    assigned_to:
+      class:          User
+      foreignAlias:   MyTickets
+      local:          assigned_to_id
+      foreign:        id
+      type:           one
+      foreignType:    many
+    type:
+      class:          TicketType
+      foreignAlias:   Tickets
+      local:          type_id
+      foreign:        id
+      type:           one
+      foreignType:    many
+    priority:
+      class:          TicketPriority
+      foreignAlias:   Tickets
+      local:          priority_id
+      foreign:        id
+      type:           one
+      foreignType:    many
+    status:
+      class:          TicketStatus
+      foreignAlias:   Tickets
+      local:          status_id
+      foreign:        id
+      type:           one
+      foreignType:    many
 
 #-------------------------------------------------------------------------------
+TicketType:
+  tableName:          ticket_type
+  columns:
+    type_name:        { type: string(64), notnull: true, unique: true, name: type_name as name }
+    is_default:       { type: boolean, notnull: true, default: false }
+    position:         { type: integer }
 
+#-------------------------------------------------------------------------------
+TicketPriority:
+  tableName:          ticket_priority
+  columns:
+    priority_name:    { type: string(64), notnull: true, unique: true, name: priority_name as name }
+    is_default:       { type: boolean, notnull: true, default: false }
+    position:         { type: integer }
+
+#-------------------------------------------------------------------------------
+TicketStatus:
+  tableName:          ticket_status
+  columns:
+    status_name:      { type: string(64), notnull: true, unique: true, name: status_name as name }
+    is_default:       { type: boolean, notnull: true, default: false }
+    position:         { type: integer }
 
 
 

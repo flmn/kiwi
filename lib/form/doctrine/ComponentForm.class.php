@@ -46,8 +46,8 @@ class ComponentForm extends BaseComponentForm {
     $this->parentId = $parentId;
   }
 
-  protected function doSave($con = null) {
-    parent::doSave($con);
+  protected function doSave($conn = null) {
+    parent::doSave($conn);
     $node = $this->object->getNode();
     $parent = $this->object->getTable()->find($this->parentId);
     $method = ($node->isValidNode() ? 'move' : 'insert') . 'AsLastChildOf';
