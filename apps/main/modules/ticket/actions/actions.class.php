@@ -27,6 +27,7 @@ class ticketActions extends sfActions {
   public function executeShow(sfWebRequest $request) {
     $this->project = Doctrine::getTable('Project')->findOneByIdentifier($request->getParameter('project_id'));
     $this->ticket = Doctrine::getTable('Ticket')->find($request->getParameter('id'));
+    $this->form = new TicketForm($this->project, $this->ticket);
   }
 
   /**
@@ -40,20 +41,6 @@ class ticketActions extends sfActions {
     if ($request->isMethod('post')) {
       $this->_processForm($request, $this->form);
     }
-
-    $this->setTemplate('form');
-  }
-
-  public function executeEdit(sfWebRequest $request) {
-    $this->project = Doctrine::getTable('Project')->findOneByIdentifier($request->getParameter('project_id'));
-    $this->ticket = Doctrine::getTable('Ticket')->find($request->getParameter('id'));
-    $this->form = new TicketForm($this->project, $this->ticket);
-
-    if ($request->isMethod('post')) {
-      $this->_processForm($request, $this->form);
-    }
-
-    $this->setTemplate('form');
   }
 
   protected function _processForm(sfWebRequest $request, sfForm $form) {
@@ -67,7 +54,7 @@ class ticketActions extends sfActions {
       $success = $form->getObject()->isNew() ? 'The item was created successfully.' : 'The item was updated successfully.';
       $ticket = $form->save();
       $this->getUser()->setFlash('success', $success);
-      $this->redirect(array('sf_route' => 'ticket_edit', 'project_id' => $this->project['identifier'], 'id' => $ticket['id']));
+      $this->redirect(array('sf_route' => 'ticket_show', 'project_id' => $this->project['identifier'], 'id' => $ticket['id']));
     }
   }
 

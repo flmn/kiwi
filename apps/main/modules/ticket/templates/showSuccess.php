@@ -47,5 +47,11 @@
         </tr>
       </tbody>
     </table>
+    <div class="description">
+      <h5><?php echo __('Description') ?></h5>
+      <div>
+        <?php echo $ticket['description'] ?>
+      </div>
+    </div>
   </div>
 </div>

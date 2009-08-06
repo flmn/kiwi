@@ -66,10 +66,10 @@ all:
 #      use_flash:       true
 #      default_culture: %SF_DEFAULT_CULTURE%
 #
-#  storage:
-#    class: sfSessionStorage
-#    param:
-#      session_name: symfony
+  storage:
+    class: sfSessionStorage
+    param:
+      session_name: kiwi
 #
 #  view_cache:
 #    class: sfFileCache

@@ -1,15 +1,38 @@
 <?php
 
-class myUser extends sfBasicSecurityUser
-{
+class myUser extends sfBasicSecurityUser {
   private $user = null;
 
-  public function initialize(sfEventDispatcher $dispatcher, sfStorage $storage, $options = array())
-  {
-    // initialize parent
+  public function initialize(sfEventDispatcher $dispatcher, sfStorage $storage, $options = array()) {
+  // initialize parent
     parent::initialize($dispatcher, $storage, $options);
 
+    if (!$this->isAuthenticated()) {
+      $this->getAttributeHolder()->removeNamespace('kiwi');
+      $this->user = null;
+    }
+
     $this->setAttribute('theme', $this->getAttribute('theme', sfConfig::get('sf_default_theme'), 'kiwi'), 'kiwi');
+  }
+
+  public function hasCredential($credential, $useAnd = true) {
+    if (empty($credential)) {
+      return true;
+    }
+
+    if (!$this->getUserObject()) {
+      return false;
+    }
+    
+    if ($credential == 'site_admin') {
+      if ($this->getUserObject()->getIsAdmin()) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    return parent::hasCredential($credential, $useAnd);
   }
 
   protected function _setAttributes($user) {
@@ -29,7 +52,6 @@ class myUser extends sfBasicSecurityUser
 
   public function logout() {
     $this->getAttributeHolder()->removeNamespace('kiwi');
-    $this->getAttributeHolder()->removeNamespace('kiwi.admin');
     $this->user = null;
     $this->clearCredentials();
     $this->setAuthenticated(false);

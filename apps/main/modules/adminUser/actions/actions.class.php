@@ -33,14 +33,14 @@ class adminUserActions extends sfActions {
 
     if ($request->hasParameter('_reset')) {
       $this->_setFilters(array());
-      $this->redirect('@user');
+      $this->redirect('user');
     }
 
     $this->filters = new UserFormFilter($this->_getFilters(), array());
     $this->filters->bind($request->getParameter($this->filters->getName()));
     if ($this->filters->isValid()) {
       $this->_setFilters($this->filters->getValues());
-      $this->redirect('@user');
+      $this->redirect('user');
     }
 
     $this->pager = $this->_getPager();

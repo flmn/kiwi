@@ -33,14 +33,14 @@ class adminProjectActions extends sfActions {
 
     if ($request->hasParameter('_reset')) {
       $this->_setFilters(array());
-      $this->redirect('@project');
+      $this->redirect('project');
     }
 
     $this->filters = new ProjectFormFilter($this->_getFilters(), array());
     $this->filters->bind($request->getParameter($this->filters->getName()));
     if ($this->filters->isValid()) {
       $this->_setFilters($this->filters->getValues());
-      $this->redirect('@project');
+      $this->redirect('project');
     }
 
     $this->pager = $this->_getPager();

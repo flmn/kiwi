@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="<?php echo $sf_user->getCulture() ?>" lang="<?php echo $sf_user->getCulture() ?>">
   <head>
     <?php include_http_metas() ?>
     <?php include_metas() ?>
@@ -26,7 +26,7 @@
         </div>
         <div id="tools">
           <div id="menu">
-            <?php echo __('Welcome') ?>, <?php echo $sf_user->getAttribute('display_name', 'User', 'kiwi') ?> [<?php echo link_to(__('Logout'), 'account/logout') ?>] |  <?php echo link_to(__('Profile'), 'account/profile') ?> |   <?php echo link_to(__('Admin'), 'admin/index') ?> |   <?php echo link_to(__('Help'), 'help/index') ?>
+            <?php echo __('Welcome') ?>, <?php echo $sf_user->getAttribute('display_name', 'User', 'kiwi') ?> [<?php echo link_to(__('Logout'), 'account/logout') ?>] | <?php echo link_to(__('Profile'), 'account/profile') ?><?php if ($sf_user->hasCredential('site_admin')): ?> | <?php echo link_to(__('Admin'), 'admin/index') ?><?php endif ?> | <?php echo link_to(__('Help'), 'help/index') ?>
           </div>
           <div id="search">
             <form action="<?php echo url_for('home/index') ?>">

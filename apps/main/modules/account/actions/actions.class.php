@@ -6,7 +6,7 @@
  * @package    kiwi
  * @subpackage account
  * @author     jitao
- * @version    
+ * @version
  */
 class accountActions extends sfActions {
 /**
@@ -17,7 +17,7 @@ class accountActions extends sfActions {
   public function executeLogin(sfWebRequest $request) {
     $user = $this->getUser();
     if ($user->isAuthenticated()) {
-      return $this->redirect('@homepage');
+      return $this->redirect('homepage');
     }
 
     if ($request->isXmlHttpRequest()) {
@@ -35,7 +35,7 @@ class accountActions extends sfActions {
         $values = $this->form->getValues();
         $this->getUser()->login($values['user']);
 
-        return $this->redirect('@homepage');
+        return $this->redirect('homepage');
       }
     } else {
       $this->getResponse()->setStatusCode(401);
@@ -49,7 +49,15 @@ class accountActions extends sfActions {
    */
   public function executeLogout(sfWebRequest $request) {
     $this->getUser()->logout();
-    return $this->redirect('@homepage');
+    return $this->redirect('homepage');
+  }
+
+  /**
+   * Executes secure action
+   *
+   * @param sfRequest $request A request object
+   */
+  public function executeSecure(sfWebRequest $request) {
   }
 
   /**

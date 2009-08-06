@@ -1,6 +1,6 @@
 <div style="height: 120px;">&nbsp;</div>
 <div id="login-form">
-  <form id="login" action="<?php echo url_for('@login') ?>" method="post">
+  <form id="login" action="#" method="post">
     <fieldset>
       <legend><?php echo __('Login') ?></legend>
       <?php include_partial('common/form_errors', array('form' => $form)) ?>
