@@ -4,13 +4,13 @@
 
 <div>
   <?php if ($form->isNew()): ?>
-  <h3><?php echo __('New Project') ?></h3>
+  <h3><?php echo __('New Role') ?></h3>
   <?php else: ?>
-  <h3><?php echo __('Edit Project').': '.$project['name'] ?></h3>
+  <h3><?php echo __('Edit Role').': '.$role['name'] ?></h3>
   <?php endif; ?>
   <hr/>
   <?php include_partial('common/flashes') ?>
-  <?php echo form_tag_for($form, '@project') ?>
+  <?php echo form_tag_for($form, '@role') ?>
   <?php echo $form->renderHiddenFields() ?>
   <p>
     <input type="submit" value="<?php echo __('Save', array(), 'sf_admin') ?>" />
@@ -26,16 +26,6 @@
       <?php include_partial('common/form_field', array(
           'form'       => $form,
           'name'       => 'name',
-          'attributes' => array('class' => 'text'),
-          )) ?>
-      <?php include_partial('common/form_field', array(
-          'form'       => $form,
-          'name'       => 'identifier',
-          'attributes' => array('class' => 'text'),
-          )) ?>
-      <?php include_partial('common/form_field', array(
-          'form'       => $form,
-          'name'       => 'project_status',
           'attributes' => array('class' => 'text'),
           )) ?>
     </tbody>

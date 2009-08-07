@@ -90,11 +90,11 @@ class adminProjectActions extends sfActions {
   }
 
   protected function _getFilters() {
-    return $this->getUser()->getAttribute('project.filters', array(), 'kiwi.admin');
+    return $this->getUser()->getAttribute('admin.project.filters', array(), 'kiwi');
   }
 
   protected function _setFilters(array $filters) {
-    return $this->getUser()->setAttribute('project.filters', $filters, 'kiwi.admin');
+    return $this->getUser()->setAttribute('admin.project.filters', $filters, 'kiwi');
   }
 
   protected function _getPager() {
@@ -107,11 +107,11 @@ class adminProjectActions extends sfActions {
   }
 
   protected function _setPage($page) {
-    $this->getUser()->setAttribute('project.page', $page, 'kiwi.admin');
+    $this->getUser()->setAttribute('admin.project.page', $page, 'kiwi');
   }
 
   protected function _getPage() {
-    return $this->getUser()->getAttribute('project.page', 1, 'kiwi.admin');
+    return $this->getUser()->getAttribute('admin.project.page', 1, 'kiwi');
   }
 
   protected function _buildQuery() {
@@ -135,13 +135,13 @@ class adminProjectActions extends sfActions {
   }
 
   protected function _getSort() {
-    if (!is_null($sort = $this->getUser()->getAttribute('project.sort', null, 'kiwi.admin'))) {
+    if (!is_null($sort = $this->getUser()->getAttribute('admin.project.sort', null, 'kiwi'))) {
       return $sort;
     }
 
     $this->_setSort(array(null, null));
 
-    return $this->getUser()->getAttribute('project.sort', null, 'kiwi.admin');
+    return $this->getUser()->getAttribute('admin.project.sort', null, 'kiwi');
   }
 
   protected function _setSort(array $sort) {
@@ -149,6 +149,6 @@ class adminProjectActions extends sfActions {
       $sort[1] = 'asc';
     }
 
-    $this->getUser()->setAttribute('project.sort', $sort, 'kiwi.admin');
+    $this->getUser()->setAttribute('admin.project.sort', $sort, 'kiwi');
   }
 }

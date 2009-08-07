@@ -89,6 +89,15 @@ user:
     column:               id
     with_wildcard_routes: true
 
+role:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Role
+    module:               adminRole
+    prefix_path:          admin/role
+    column:               id
+    with_wildcard_routes: true
+
 project:
   class: sfDoctrineRouteCollection
   options:

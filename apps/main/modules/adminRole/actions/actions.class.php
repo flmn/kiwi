@@ -1,14 +1,14 @@
 <?php
 
 /**
- * user actions.
+ * adminRole actions.
  *
  * @package    kiwi
- * @subpackage adminUser
+ * @subpackage adminRole
  * @author     jitao
  * @version
  */
-class adminUserActions extends sfActions {
+class adminRoleActions extends sfActions {
 /**
  * Executes index action
  *
@@ -33,14 +33,14 @@ class adminUserActions extends sfActions {
 
     if ($request->hasParameter('_reset')) {
       $this->_setFilters(array());
-      $this->redirect('user');
+      $this->redirect('role');
     }
 
-    $this->filters = new UserFormFilter($this->_getFilters(), array());
+    $this->filters = new RoleFormFilter($this->_getFilters(), array());
     $this->filters->bind($request->getParameter($this->filters->getName()));
     if ($this->filters->isValid()) {
       $this->_setFilters($this->filters->getValues());
-      $this->redirect('user');
+      $this->redirect('role');
     }
 
     $this->pager = $this->_getPager();
@@ -50,14 +50,14 @@ class adminUserActions extends sfActions {
   }
 
   public function executeNew(sfWebRequest $request) {
-    $this->form = new UserForm();
-    $this->user = $this->form->getObject();
+    $this->form = new RoleForm();
+    $this->role = $this->form->getObject();
     $this->setTemplate('form');
   }
 
   public function executeCreate(sfWebRequest $request) {
-    $this->form = new UserForm();
-    $this->user = $this->form->getObject();
+    $this->form = new RoleForm();
+    $this->role = $this->form->getObject();
 
     $this->_processForm($request, $this->form);
 
@@ -65,14 +65,14 @@ class adminUserActions extends sfActions {
   }
 
   public function executeEdit(sfWebRequest $request) {
-    $this->user = $this->getRoute()->getObject();
-    $this->form = new UserForm($this->user);
+    $this->role = $this->getRoute()->getObject();
+    $this->form = new RoleForm($this->role);
     $this->setTemplate('form');
   }
 
   public function executeUpdate(sfWebRequest $request) {
-    $this->user = $this->getRoute()->getObject();
-    $this->form = new UserForm($this->user);
+    $this->role = $this->getRoute()->getObject();
+    $this->form = new RoleForm($this->role);
 
     $this->_processForm($request, $this->form);
 
@@ -83,22 +83,22 @@ class adminUserActions extends sfActions {
     $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
     if ($form->isValid()) {
       $success = $form->getObject()->isNew() ? 'The item was created successfully.' : 'The item was updated successfully.';
-      $user = $form->save();
+      $role = $form->save();
       $this->getUser()->setFlash('success', $success);
-      $this->redirect(array('sf_route' => 'user_edit', 'sf_subject' => $user));
+      $this->redirect(array('sf_route' => 'role_edit', 'sf_subject' => $role));
     }
   }
 
   protected function _getFilters() {
-    return $this->getUser()->getAttribute('admin.user.filters', array(), 'kiwi');
+    return $this->getUser()->getAttribute('admin.role.filters', array(), 'kiwi');
   }
 
   protected function _setFilters(array $filters) {
-    return $this->getUser()->setAttribute('admin.user.filters', $filters, 'kiwi');
+    return $this->getUser()->setAttribute('admin.role.filters', $filters, 'kiwi');
   }
 
   protected function _getPager() {
-    $pager = new sfDoctrinePager('User', 20);
+    $pager = new sfDoctrinePager('Role', 20);
     $pager->setQuery($this->_buildQuery());
     $pager->setPage($this->_getPage());
     $pager->init();
@@ -107,16 +107,16 @@ class adminUserActions extends sfActions {
   }
 
   protected function _setPage($page) {
-    $this->getUser()->setAttribute('admin.user.page', $page, 'kiwi');
+    $this->getUser()->setAttribute('admin.role.page', $page, 'kiwi');
   }
 
   protected function _getPage() {
-    return $this->getUser()->getAttribute('admin.user.page', 1, 'kiwi');
+    return $this->getUser()->getAttribute('admin.role.page', 1, 'kiwi');
   }
 
   protected function _buildQuery() {
     if (is_null($this->filters)) {
-      $this->filters = new UserFormFilter($this->_getFilters(), array());
+      $this->filters = new RoleFormFilter($this->_getFilters(), array());
     }
     $this->filters->setTableMethod('');
     $query = $this->filters->buildQuery($this->_getFilters());
@@ -135,13 +135,13 @@ class adminUserActions extends sfActions {
   }
 
   protected function _getSort() {
-    if (!is_null($sort = $this->getUser()->getAttribute('admin.user.sort', null, 'kiwi'))) {
+    if (!is_null($sort = $this->getUser()->getAttribute('admin.role.sort', null, 'kiwi'))) {
       return $sort;
     }
 
     $this->_setSort(array(null, null));
 
-    return $this->getUser()->getAttribute('admin.user.sort', null, 'kiwi');
+    return $this->getUser()->getAttribute('admin.role.sort', null, 'kiwi');
   }
 
   protected function _setSort(array $sort) {
@@ -149,6 +149,6 @@ class adminUserActions extends sfActions {
       $sort[1] = 'asc';
     }
 
-    $this->getUser()->setAttribute('admin.user.sort', $sort, 'kiwi');
+    $this->getUser()->setAttribute('admin.role.sort', $sort, 'kiwi');
   }
 }

@@ -25,7 +25,6 @@ Role:
   tableName:          role
   columns:
     role_name:        { type: string(32), notnull: true, name: role_name as name }
-    is_builtin:       { type: boolean, notnull: true, default: false }
     permissions:      { type: clob(65532) }
 
 #-------------------------------------------------------------------------------

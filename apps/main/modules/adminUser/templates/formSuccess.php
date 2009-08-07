@@ -10,7 +10,7 @@
   <?php endif; ?>
   <hr/>
   <?php include_partial('common/flashes') ?>
-  <?php echo form_tag_for($form, 'user') ?>
+  <?php echo form_tag_for($form, '@user') ?>
   <?php echo $form->renderHiddenFields() ?>
   <p>
     <input type="submit" value="<?php echo __('Save', array(), 'sf_admin') ?>" />
