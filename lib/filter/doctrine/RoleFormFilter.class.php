@@ -5,11 +5,10 @@
  *
  * @package    filters
  * @subpackage Role *
- * @version    SVN: $Id: sfDoctrineFormFilterTemplate.php 11675 2008-09-19 15:21:38Z fabien $
+ * @version    
  */
-class RoleFormFilter extends BaseRoleFormFilter
-{
-  public function configure()
-  {
+class RoleFormFilter extends BaseRoleFormFilter {
+  public function configure() {
+    $this->widgetSchema['name']->setOption('template', '%input%');
   }
 }

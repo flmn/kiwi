@@ -43,7 +43,7 @@
           <?php include_partial('common/list_title', array(
               'sort'   => $sort,
               'column' => 'name',
-              'title'  => 'role_name',
+              'title'  => 'Role name',
               'route'  => 'role',
               )) ?>
         </th>

@@ -25,13 +25,6 @@ test:
       send_http_headers: false
 
 all:
-  routing:
-    class: sfPatternRouting
-    param:
-      generate_shortest_url:            true
-      extra_parameters_as_query_string: true
-
-all:
 #  controller:
 #    class: sfFrontWebController
 #
@@ -98,13 +91,13 @@ all:
     class: sfPatternRouting
     param:
 #      load_configuration:               true
-      suffix:                           '.html'
+#      suffix:                           '.html'
 #      default_module:                   default
 #      default_action:                   index
 #      debug:                            %SF_DEBUG%
 #      logging:                          %SF_LOGGING_ENABLED%
-#      generate_shortest_url:            false
-#      extra_parameters_as_query_string: false
+      generate_shortest_url:            true
+      extra_parameters_as_query_string: true
 #      cache:
 #        class: sfFileCache
 #        param:

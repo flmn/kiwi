@@ -49,7 +49,7 @@
           <?php include_partial('common/list_title', array(
               'sort'   => $sort,
               'column' => 'name',
-              'title'  => 'Project_name',
+              'title'  => 'Project name',
               'route'  => 'project',
               )) ?>
         </th>
