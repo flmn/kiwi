@@ -16,6 +16,7 @@ class milestoneActions extends sfActions {
  */
   public function executeIndex(sfWebRequest $request) {
     $this->project = Doctrine::getTable('Project')->findOneByIdentifier($request->getParameter('project_id'));
+    $this->forward404Unless($this->project);
     // pager
     if ($request->getParameter('page')) {
       $this->_setPage($request->getParameter('page'));
@@ -31,6 +32,7 @@ class milestoneActions extends sfActions {
    */
   public function executeNew(sfWebRequest $request) {
     $this->project = Doctrine::getTable('Project')->findOneByIdentifier($request->getParameter('project_id'));
+    $this->forward404Unless($this->project);
     $this->form = new MilestoneForm();
 
     if ($request->isMethod('post')) {
@@ -42,6 +44,7 @@ class milestoneActions extends sfActions {
 
   public function executeEdit(sfWebRequest $request) {
     $this->project = Doctrine::getTable('Project')->findOneByIdentifier($request->getParameter('project_id'));
+    $this->forward404Unless($this->project);
     $this->milestone = Doctrine::getTable('Milestone')->find($request->getParameter('id'));
     $this->form = new MilestoneForm($this->milestone);
 

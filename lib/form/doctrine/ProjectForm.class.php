@@ -9,11 +9,6 @@
  */
 class ProjectForm extends BaseProjectForm {
   public function configure() {
-    unset(
-        $this['created_at'],
-        $this['updated_at']
-    );
-
     $this->widgetSchema['identifier'] = new sfWidgetFormInput();
     if (!$this->getObject()->isNew()) {
       $this->widgetSchema['identifier']->setAttribute('disabled', true);

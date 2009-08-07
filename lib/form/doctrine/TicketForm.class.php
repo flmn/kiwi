@@ -18,9 +18,7 @@ class TicketForm extends BaseTicketForm {
 
   public function configure() {
     unset(
-        $this['ticket_number'],
-        $this['created_at'],
-        $this['updated_at']
+        $this['ticket_number']
     );
 
     $this->widgetSchema['component_id'] = new sfWidgetFormDoctrineChoice(array(

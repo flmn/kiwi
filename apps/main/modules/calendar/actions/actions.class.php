@@ -16,5 +16,6 @@ class calendarActions extends sfActions {
  */
   public function executeIndex(sfWebRequest $request) {
     $this->project = Doctrine::getTable('Project')->findOneByIdentifier($request->getParameter('project_id'));
+    $this->forward404Unless($this->project);
   }
 }

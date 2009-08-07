@@ -10,9 +10,7 @@
 class UserForm extends BaseUserForm {
   public function configure() {
     unset(
-        $this['last_login_at'],
-        $this['created_at'],
-        $this['updated_at']
+        $this['last_login_at']
     );
 
     $this->widgetSchema['password'] = new sfWidgetFormInputPassword();

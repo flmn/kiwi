@@ -16,6 +16,7 @@ class ticketActions extends sfActions {
  */
   public function executeIndex(sfWebRequest $request) {
     $this->project = Doctrine::getTable('Project')->findOneByIdentifier($request->getParameter('project_id'));
+    $this->forward404Unless($this->project);
     // pager
     if ($request->getParameter('page')) {
       $this->_setPage($request->getParameter('page'));
@@ -26,6 +27,7 @@ class ticketActions extends sfActions {
 
   public function executeShow(sfWebRequest $request) {
     $this->project = Doctrine::getTable('Project')->findOneByIdentifier($request->getParameter('project_id'));
+    $this->forward404Unless($this->project);
     $this->ticket = Doctrine::getTable('Ticket')->find($request->getParameter('id'));
     $this->form = new TicketForm($this->project, $this->ticket);
   }
@@ -37,6 +39,7 @@ class ticketActions extends sfActions {
    */
   public function executeNew(sfWebRequest $request) {
     $this->project = Doctrine::getTable('Project')->findOneByIdentifier($request->getParameter('project_id'));
+    $this->forward404Unless($this->project);
     $this->form = new TicketForm($this->project);
     if ($request->isMethod('post')) {
       $this->_processForm($request, $this->form);

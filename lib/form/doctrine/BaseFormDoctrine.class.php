@@ -4,11 +4,13 @@
  * Project form base class.
  *
  * @package    form
- * @version    SVN: $Id: sfDoctrineFormBaseTemplate.php 6174 2007-11-27 06:22:40Z fabien $
+ * @version
  */
-abstract class BaseFormDoctrine extends sfFormDoctrine
-{
-  public function setup()
-  {
+abstract class BaseFormDoctrine extends sfFormDoctrine {
+  public function setup() {
+    unset(
+        $this['created_at'],
+        $this['updated_at']
+    );
   }
 }

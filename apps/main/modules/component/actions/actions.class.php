@@ -16,6 +16,7 @@ class componentActions extends sfActions {
  */
   public function executeIndex(sfWebRequest $request) {
     $this->project = Doctrine::getTable('Project')->findOneByIdentifier($request->getParameter('project_id'));
+    $this->forward404Unless($this->project);
     $componentTable = Doctrine::getTable('Component');
     $root = Doctrine_Query::create()->from('Component c')->where('c.root_id = ?', $this->project['id'])->addWhere('c.level = 0')->fetchOne();
     if (!$root) {
@@ -36,6 +37,7 @@ class componentActions extends sfActions {
    */
   public function executeNew(sfWebRequest $request) {
     $this->project = Doctrine::getTable('Project')->findOneByIdentifier($request->getParameter('project_id'));
+    $this->forward404Unless($this->project);
     $this->form = new ComponentForm($this->project);
 
     if ($request->isMethod('post')) {
@@ -47,6 +49,7 @@ class componentActions extends sfActions {
 
   public function executeEdit(sfWebRequest $request) {
     $this->project = Doctrine::getTable('Project')->findOneByIdentifier($request->getParameter('project_id'));
+    $this->forward404Unless($this->project);
     $this->component = Doctrine::getTable('Component')->find($request->getParameter('id'));
     $this->form = new ComponentForm($this->project, $this->component);
 
