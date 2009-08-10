@@ -4,10 +4,6 @@
  */
 class UserTable extends Doctrine_Table {
   public static function retrieveByEmail($email, $isActive = true) {
-    return Doctrine_Query::create()->
-    from('User u')->
-    where('u.email = ?', $email)->
-    addWhere('u.is_active = ?', $isActive)->
-    fetchOne();
+    return Doctrine_Query::create()->from('User u')->where('u.email = ?', $email)->addWhere('u.is_active = ?', $isActive)->fetchOne();
   }
 }

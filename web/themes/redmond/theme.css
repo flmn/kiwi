@@ -95,6 +95,26 @@
   width: 30%;
 }
 
+/* form */
+
+table.form {
+  background-color: #F6F6F6;
+  border: 1px groove #BBBBBB;
+}
+
+table.form th.key {
+  background: #C3D9FF none repeat scroll 0 0;
+  text-align: right;
+  width: 15em;
+}
+
+.form-field-help {
+  font-style: italic;
+  color: #999999;
+}
+
+/*  */
+
 .kiwi-panel {
   background: #F5F8F9;
 }
@@ -112,10 +132,7 @@
   display: block;
 }
 
-.form-field-help {
-  font-style: italic;
-  color: #999999;
-}
+/* progress */
 
 table.progress td {
   height: 1em;
@@ -125,15 +142,7 @@ table.progress td.closed {
   background: #BAE0BA none repeat scroll 0 0;
 }
 
-td.key {
-  background: #C3D9FF none repeat scroll 0 0;
-  text-align: right;
-  width: 15em;
-}
-
-table {
-  border: 1px groove #BBBBBB;
-}
+/* all */
 
 img {
   vertical-align: bottom;

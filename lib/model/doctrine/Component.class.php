@@ -13,6 +13,6 @@ class Component extends BaseComponent {
   }
   
   public function getIndentedName() {
-    return str_repeat('- ',$this['level']).$this['name'];
+    return str_repeat('- ', $this['level']).$this['name'];
   }
 }

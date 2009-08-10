@@ -16,10 +16,10 @@
     <input type="submit" value="<?php echo __('Save', array(), 'sf_admin') ?>" />
   </p>
   <?php include_partial('common/form_errors', array('form' => $form)) ?>
-  <table>
+  <table class="form">
     <thead>
       <tr>
-        <th colspan="3">&nbsp;</th>
+        <th colspan="3"><?php echo __('Basic') ?></th>
       </tr>
     </thead>
     <tbody>
@@ -28,6 +28,27 @@
           'name'       => 'name',
           'attributes' => array('class' => 'text'),
           )) ?>
+    </tbody>
+  </table>
+  <table class="form">
+    <thead>
+      <tr>
+        <th colspan="3"><?php echo __('Permissions') ?></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td colspan="3">
+          <?php foreach(PermissionTable::getAllPermissions() as $c => $ps): ?>
+          <fieldset>
+            <legend><?php echo $c ?></legend>
+              <?php foreach($ps as $name => $display): ?>
+            <label><input id="role_permissions" type="checkbox" name="role[permissions][]" value="<?php echo $name ?>"<?php if($role->hasPermission($name)): echo ' checked="checked"'; endif; ?>/><?php echo $display ?></label>
+              <?php endforeach; ?>
+          </fieldset>
+          <?php endforeach; ?>
+        </td>
+      </tr>
     </tbody>
   </table>
   <p>

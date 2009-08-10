@@ -9,7 +9,7 @@
     <?php echo $filters->renderGlobalErrors() ?>
   <?php endif; ?>
   <form action="<?php echo url_for('user_collection', array('action' => 'filter')) ?>" method="post">
-    <table cellspacing="0">
+    <table cellspacing="0" class="form">
       <thead>
         <tr>
           <th colspan="4"><?php echo __('Filter') ?></th>
