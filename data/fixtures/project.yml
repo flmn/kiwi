@@ -3,9 +3,3 @@ Project:
     name:           A B C
     identifier:     abc
     project_status: open
-
-  def:
-    name:           D E F
-    identifier:     def
-    project_status: potential
-  

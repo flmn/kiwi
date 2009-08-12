@@ -20,11 +20,6 @@
       <tbody>
         <?php include_partial('common/form_field', array(
             'form'       => $form,
-            'name'       => 'display_name',
-            'attributes' => array('class' => 'text'),
-            )) ?>
-        <?php include_partial('common/form_field', array(
-            'form'       => $form,
             'name'       => 'language',
             'attributes' => array('class' => 'text'),
             )) ?>

@@ -17,16 +17,6 @@ class componentActions extends sfActions {
   public function executeIndex(sfWebRequest $request) {
     $this->project = Doctrine::getTable('Project')->findOneByIdentifier($request->getParameter('project_id'));
     $this->forward404Unless($this->project);
-    $componentTable = Doctrine::getTable('Component');
-    $root = Doctrine_Query::create()->from('Component c')->where('c.root_id = ?', $this->project['id'])->addWhere('c.level = 0')->fetchOne();
-    if (!$root) {
-      $root = new Component();
-      $root['project_id'] = $this->project['id'];
-      $root['name'] = 'root';
-      $root['root_id'] = $this->project['id'];
-      $root->save();
-      $componentTable->getTree()->createRoot($root);
-    }
     $this->components = Doctrine_Query::create()->from('Component c')->where('c.root_id = ?', $this->project['id'])->addOrderBy('lft')->execute(array(), Doctrine::HYDRATE_RECORD);
   }
 

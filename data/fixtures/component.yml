@@ -1,0 +1,8 @@
+Component:
+  abc_root:
+    project_id: 1
+    name:       root
+    root_id:    1
+    lft:        1
+    rgt:        2
+    level:      0
