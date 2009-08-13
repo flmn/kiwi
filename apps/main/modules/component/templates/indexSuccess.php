@@ -5,7 +5,7 @@
 <?php include_partial('sidebar', array('project' => $project)) ?>
 <?php end_slot() ?>
 
-<table id="tree-table">
+<table id="tree-table" class="data">
   <thead>
     <tr>
       <th width="1px">&nbsp;</th>

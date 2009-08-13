@@ -56,7 +56,7 @@
       </tbody>
     </table>
   </form>
-  <table>
+  <table class="data">
     <thead>
       <tr>
         <th>

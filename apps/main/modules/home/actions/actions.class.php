@@ -14,6 +14,7 @@ class homeActions extends sfActions {
  * @param sfRequest $request A request object
  */
   public function executeIndex(sfWebRequest $request) {
-    ;
+    $user_id = $this->getUser()->getUserObject()->getId();
+    $this->projects = Doctrine_Query::create()->from('ProjectUserRole pur')->where('pur.user_id = ?', $user_id)->execute(array(), Doctrine::HYDRATE_RECORD);
   }
 }

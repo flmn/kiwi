@@ -16,7 +16,7 @@ User:
     projects:
       class:          Project
       foreignAlias:   Users
-      refClass:       ProjectMember
+      refClass:       ProjectUserRole
       local:          user_id
       foreign:        project_id
 
@@ -49,21 +49,28 @@ Project:
     tickets_count:    { type: integer, default: 0 }
 
 #-------------------------------------------------------------------------------
-ProjectMember:
-  tableName:          project_member
+ProjectUserRole:
+  tableName:          project_user_role
   columns:
     user_id:          { type: integer, primary: true }
     project_id:       { type: integer, primary: true }
-    role_id:          { type: integer }
+    role_id:          { type: integer, notnull: true }
   relations:
-    User:
+    user:
+      class:          User
+      foreignAlias:   ProjectUserRoles
       local:          user_id
       foreign:        id
-      foreignAlias:   ProjectMembers
-    Project:
+    project:
+      class:          Project
+      foreignAlias:   ProjectUserRoles
       local:          project_id
       foreign:        id
-      foreignAlias:   ProjectMembers
+    role:
+      class:          Role
+      foreignAlias:   ProjectUserRoles
+      local:          role_id
+      foreign:        id
 
 #-------------------------------------------------------------------------------
 Component:

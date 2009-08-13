@@ -113,6 +113,18 @@ table.form th.key {
   color: #999999;
 }
 
+/* data */
+
+table.data {
+  border: 1px groove #BBBBBB;
+}
+
+table.data th.key {
+  background: #C3D9FF none repeat scroll 0 0;
+  text-align: right;
+  width: 15em;
+}
+
 /*  */
 
 .kiwi-panel {

@@ -5,7 +5,7 @@
 <div>
   <h3><?php echo __('Profile') ?></h3>
   <hr/>
-  <table>
+  <table class="data">
     <thead>
       <tr>
         <th colspan="2"><?php echo __('Basic') ?></th>
@@ -13,19 +13,19 @@
     </thead>
     <tbody>
       <tr>
-        <td class="key"><?php echo __('Email') ?></td>
+        <th class="key"><?php echo __('Email') ?></th>
         <td><?php echo $user['email'] ?></td>
       </tr>
       <tr>
-        <td class="key"><?php echo __('Display name') ?></td>
+        <th class="key"><?php echo __('Display name') ?></th>
         <td><?php echo $user['display_name'] ?></td>
       </tr>
       <tr>
-        <td class="key"><?php echo __('Language') ?></td>
+        <th class="key"><?php echo __('Language') ?></th>
         <td><?php echo $cultures[$user['language']]; ?></td>
       </tr>
       <tr>
-        <td class="key"><?php echo __('Theme') ?></td>
+        <th class="key"><?php echo __('Theme') ?></th>
         <td><?php echo $themes[$user['theme']]; ?></td>
       </tr>
     </tbody>

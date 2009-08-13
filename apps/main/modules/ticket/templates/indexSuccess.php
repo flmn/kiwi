@@ -8,7 +8,7 @@
 <div>
   <h3><?php echo __('Tickets') ?></h3>
   <hr/>
-  <table>
+  <table class="data">
     <thead>
       <tr>
         <th>Ticket</th>
