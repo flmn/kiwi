@@ -1,11 +1,7 @@
 cache/*
 data/sql
 lib/filter/doctrine/base/*
-/lib/filter/doctrine/PermissionFormFilter.class.php
-/lib/filter/doctrine/ProjectUserRoleFormFilter.class.php
 lib/form/doctrine/base/*
-/lib/form/doctrine/PermissionForm.class.php
-/lib/form/doctrine/ProjectUserRoleForm.class.php
 lib/model/doctrine/base/*
 lib/symfony
 log/*
