@@ -1,9 +1,16 @@
 User:
-  flmn:
-    email:        flmnix@gmail.com
-    password:     pass
+  admin:
+    email:        admin@kiwi.mail
+    password:     admin
     display_name: Administrator
     is_admin:     true
+    language:     en_US
+    theme:        redmond
+  dev:
+    email:        dev@kiwi.mail
+    password:     dev
+    display_name: Developer
+    is_admin:     false
     language:     en_US
     theme:        redmond
 

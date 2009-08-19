@@ -52,8 +52,8 @@ Project:
 ProjectUserRole:
   tableName:          project_user_role
   columns:
-    user_id:          { type: integer, primary: true }
-    project_id:       { type: integer, primary: true }
+    user_id:          { type: integer, notnull: true }
+    project_id:       { type: integer, notnull: true }
     role_id:          { type: integer, notnull: true }
   relations:
     user:

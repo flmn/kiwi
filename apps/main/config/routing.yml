@@ -66,6 +66,10 @@ settings_members:
   url:     /project/:project_id/settings/members
   param:   { module: settings, action: members }
 
+settings_member_delete:
+  url:     /project/:project_id/settings/members/:id
+  param:   { module: settings, action: memberDelete }
+
 
 #-------------------------------------------------------------------------------
 login:
