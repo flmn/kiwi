@@ -28,6 +28,11 @@
     <tbody>
       <?php include_partial('common/form_field', array(
           'form'       => $form,
+          'name'       => 'type_id',
+          'attributes' => array('class' => 'text'),
+          )) ?>
+      <?php include_partial('common/form_field', array(
+          'form'       => $form,
           'name'       => 'subject',
           'attributes' => array('class' => 'text'),
           )) ?>
@@ -43,17 +48,22 @@
           )) ?>
       <?php include_partial('common/form_field', array(
           'form'       => $form,
-          'name'       => 'type_id',
-          'attributes' => array('class' => 'text'),
-          )) ?>
-      <?php include_partial('common/form_field', array(
-          'form'       => $form,
           'name'       => 'priority_id',
           'attributes' => array('class' => 'text'),
           )) ?>
       <?php include_partial('common/form_field', array(
           'form'       => $form,
           'name'       => 'status_id',
+          'attributes' => array('class' => 'text'),
+          )) ?>
+      <?php include_partial('common/form_field', array(
+          'form'       => $form,
+          'name'       => 'start_date',
+          'attributes' => array('class' => 'text'),
+          )) ?>
+      <?php include_partial('common/form_field', array(
+          'form'       => $form,
+          'name'       => 'due_date',
           'attributes' => array('class' => 'text'),
           )) ?>
       <?php include_partial('common/form_field', array(

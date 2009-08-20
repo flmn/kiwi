@@ -20,7 +20,7 @@ class TicketForm extends BaseTicketForm {
     unset(
         $this['ticket_number']
     );
-
+    
     $this->widgetSchema['component_id'] = new sfWidgetFormDoctrineChoice(array(
         'model'    => 'Component',
         'order_by' => array('lft', ''),
@@ -33,6 +33,10 @@ class TicketForm extends BaseTicketForm {
         'add_empty' => true,
         'query'    => Doctrine_Query::create()->from('Milestone m')->where('m.project_id = ?', $this->project['id']),
     ));
+
+    $this->widgetSchema['start_date']->setOption('format', '%year%-%month%-%day%');
+
+    $this->widgetSchema['due_date']->setOption('format', '%year%-%month%-%day%');
 
     $this->setDefaults(array(
         'type_id'     => Doctrine::getTable('TicketType')->findOneByIsDefault(true)->getId(),

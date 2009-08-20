@@ -25,7 +25,7 @@
         </td>
         <td><?php echo $member['role'] ?></td>
         <td>
-            <?php echo 'Remove' ?>
+            <?php echo link_to('Remove', 'settings_member_delete', array('project_id' => $project['identifier'], 'id' => $member['id']), array('method' => 'delete', 'confirm' => 'Are you sure?')) ?>
         </td>
       </tr>
       <?php endforeach; ?>

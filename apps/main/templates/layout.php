@@ -56,7 +56,7 @@
 
     <script type="text/javascript">
       var layout;
-      $(document).ready(function () {
+      $(function () {
         layout = $('body').layout(layout_settings);
         $('#navigation > ul > li').mouseenter(function(){$(this).addClass("ui-state-hover")}).mouseout(function(){$(this).removeClass("ui-state-hover")});
       });

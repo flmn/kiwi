@@ -16,7 +16,7 @@
     </tr>
     <tr>
       <td>
-            <?php echo $milestone['due'] ?>
+            <?php echo $milestone['due_date'] ?>
       </td>
     </tr>
     <tr>

@@ -45,6 +45,20 @@
             <?php echo $ticket['component'] ?>
           </td>
         </tr>
+        <tr>
+          <th>
+            <?php echo __('Start Date') ?>
+          </th>
+          <td>
+            <?php echo $ticket['start_date'] ?>
+          </td>
+          <th>
+            <?php echo __('Due date') ?>
+          </th>
+          <td>
+            <?php echo $ticket['due_date'] ?>
+          </td>
+        </tr>
       </tbody>
     </table>
     <div class="description">

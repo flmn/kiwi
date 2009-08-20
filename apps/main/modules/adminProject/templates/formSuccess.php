@@ -38,6 +38,11 @@
           'name'       => 'project_status',
           'attributes' => array('class' => 'text'),
           )) ?>
+      <?php include_partial('common/form_field', array(
+          'form'       => $form,
+          'name'       => 'description',
+          'attributes' => array('class' => 'text'),
+          )) ?>
     </tbody>
   </table>
   <p>

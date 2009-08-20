@@ -33,7 +33,7 @@
             )) ?>
         <?php include_partial('common/form_field', array(
             'form'       => $form,
-            'name'       => 'due',
+            'name'       => 'due_date',
             'attributes' => array('class' => 'text'),
             )) ?>
         <?php include_partial('common/form_field', array(

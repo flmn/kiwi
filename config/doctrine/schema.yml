@@ -41,7 +41,7 @@ Project:
   columns:
     identifier:       { type: string(32), notnull: true, unique: true }
     project_name:     { type: string(128), notnull: true, name: project_name as name }
-    description:      { type: string(255) }
+    description:      { type: clob(65532) }
     project_status:
       type:           enum
       values:         [potential, open, closed]
@@ -98,7 +98,7 @@ Milestone:
   columns:
     project_id:       { type: integer, notnull: true }
     milestone_name:   { type: string(64), notnull: true, name: milestone_name as name }
-    due:              { type: date }
+    due_date:         { type: date }
     description:      { type: string(255) }
   relations:
     project:
@@ -115,15 +115,18 @@ Ticket:
   columns:
     ticket_number:    { type: integer, notnull: true }
     project_id:       { type: integer, notnull: true }
+    type_id:          { type: integer, notnull: true }
+    priority_id:      { type: integer, notnull: true }
+    status_id:        { type: integer, notnull: true }
     component_id:     { type: integer, notnull: true }
     milestone_id:     { type: integer }
     author_id:        { type: integer, notnull: true }
     assigned_to_id:   { type: integer }
     subject:          { type: string(255), notnull: true }
+    start_date:       { type: date }
+    due_date:         { type: date }
     description:      { type: clob(65532) }
-    type_id:          { type: integer, notnull: true }
-    priority_id:      { type: integer, notnull: true }
-    status_id:        { type: integer, notnull: true }
+    done_ratio:       { type: integer }
   relations:
     project:
       class:          Project

@@ -18,6 +18,10 @@
         <th class="key"><?php echo __('Status') ?></th>
         <td><?php echo $project['project_status'] ?></td>
       </tr>
+      <tr>
+        <th class="key"><?php echo __('Description') ?></th>
+        <td><?php echo $project['description'] ?></td>
+      </tr>
     </tbody>
   </table>
 </div>

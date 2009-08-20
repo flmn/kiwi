@@ -47,5 +47,15 @@ class settingsActions extends sfActions {
    * @param sfRequest $request A request object
    */
   public function executeMemberDelete(sfWebRequest $request) {
+    $request->checkCSRFProtection();
+    $this->project = Doctrine::getTable('Project')->findOneByIdentifier($request->getParameter('project_id'));
+    $this->forward404Unless($this->project);
+    if ($request->isMethod('delete')) {
+      $member = Doctrine::getTable('ProjectUserRole')->find($request->getParameter('id'));
+      $this->forward404Unless($member);
+      $member->delete();
+      $this->getUser()->setFlash('success', 'The item was deleted successfully.');
+    }
+    $this->redirect(array('sf_route' => 'settings_members', 'project_id' => $this->project['identifier']));
   }
 }

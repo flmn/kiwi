@@ -59,17 +59,17 @@ ticket_edit:
 
 #-------------------------------------------------------------------------------
 settings:
-  url:     /project/:project_id/settings
-  param:   { module: settings, action: index }
+  url:          /project/:project_id/settings
+  param:        { module: settings, action: index }
 
 settings_members:
-  url:     /project/:project_id/settings/members
-  param:   { module: settings, action: members }
+  url:          /project/:project_id/settings/members
+  param:        { module: settings, action: members }
 
 settings_member_delete:
-  url:     /project/:project_id/settings/members/:id
-  param:   { module: settings, action: memberDelete }
-
+  url:          /project/:project_id/settings/members/:id/delete
+  param:        { module: settings, action: memberDelete }
+  requirements: { sf_method: [delete] }
 
 #-------------------------------------------------------------------------------
 login:
