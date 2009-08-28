@@ -1,7 +1,9 @@
 rendering: ~
-security:  ~
-
-# insert your own filters here
+security: ~
+projectSecurity:
+  class: projectSecurityFilter
+  param:
+    type: security
 
 cache:     ~
 common:    ~
