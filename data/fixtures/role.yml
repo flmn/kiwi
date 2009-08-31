@@ -1,7 +1,7 @@
 Role:
   manager:
     name:        Manager
-    permissions: project_edit,ticket_add
+    permissions: settings_edit,ticket_add
     
   developer:
     name:        Developer

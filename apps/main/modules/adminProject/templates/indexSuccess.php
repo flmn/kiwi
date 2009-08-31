@@ -82,7 +82,7 @@
         </td>
         <td><?php echo $project['project_status'] ?></td>
         <td>
-            <?php echo link_to(__('Home'), 'project_home', $project) ?>
+            <?php echo link_to(__('Home'), 'project_home', array('project_id' => $project['identifier'])) ?>
         </td>
       </tr>
       <?php endforeach; ?>

@@ -1,8 +1,6 @@
 
 project_home:
-  url:     /project/:identifier
-  class:   sfDoctrineRoute
-  options: { model: Project, type: object }
+  url:     /project/:project_id
   param:   { module: project, action: home }
 
 #-------------------------------------------------------------------------------

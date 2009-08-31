@@ -2,6 +2,7 @@
 
 class myUser extends sfBasicSecurityUser {
   private $user = null;
+  private $permissions = array();
 
   public function initialize(sfEventDispatcher $dispatcher, sfStorage $storage, $options = array()) {
   // initialize parent
@@ -23,7 +24,7 @@ class myUser extends sfBasicSecurityUser {
     if (!$this->getUserObject()) {
       return false;
     }
-    
+
     if ($credential == 'site_admin') {
       if ($this->getUserObject()->getIsAdmin()) {
         return true;
@@ -33,6 +34,28 @@ class myUser extends sfBasicSecurityUser {
     }
 
     return parent::hasCredential($credential, $useAnd);
+  }
+
+  public function hasPermission($project_identifier, $permission) {
+    if ($this->getUserObject()->getIsAdmin()) {
+      return true;
+    }
+
+    if (!array_key_exists($project_identifier, $this->permissions)) {
+      $project = Doctrine::getTable('Project')->findOneByIdentifier($project_identifier);
+      $this->permissions[$project_identifier] = ProjectUserRoleTable::getPermissions($project['id'], $this->getAttribute('user_id', 0, 'kiwi'));
+    }
+
+    $project_permissions = $this->permissions[$project_identifier];
+    if (is_null($permission) && !empty($project_permissions)) {
+      return true;
+    }
+
+    if (array_key_exists($permission, $project_permissions) && $project_permissions[$permission] == 1) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   protected function _setAttributes($user) {
@@ -53,6 +76,7 @@ class myUser extends sfBasicSecurityUser {
   public function logout() {
     $this->getAttributeHolder()->removeNamespace('kiwi');
     $this->user = null;
+    $this->permissions = array();
     $this->clearCredentials();
     $this->setAuthenticated(false);
     $this->setCulture(sfConfig::get('sf_default_culture'));

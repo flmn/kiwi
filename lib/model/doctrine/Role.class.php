@@ -5,11 +5,11 @@
  */
 class Role extends BaseRole {
 
-  protected $permissionsArray;
+  protected $permissionsArray = null;
 
   public function hasPermission($permission) {
     if (is_null($this->permissionsArray)) {
-      $this->permissionsArray = explode(",", $this['permissions']);;
+      $this->permissionsArray = explode(',', $this['permissions']);
     }
 
     return in_array($permission, $this->permissionsArray);

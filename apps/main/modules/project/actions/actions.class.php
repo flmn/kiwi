@@ -15,6 +15,6 @@ class projectActions extends sfActions {
  * @param sfRequest $request A request object
  */
   public function executeHome(sfWebRequest $request) {
-    $this->project = $this->getRoute()->getObject();
+    $this->project = Doctrine::getTable('Project')->findOneByIdentifier($request->getParameter('project_id'));
   }
 }

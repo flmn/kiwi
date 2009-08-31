@@ -1,8 +1,8 @@
 Permission:
-  project_edit:
-    name:         project_edit
+  settings_edit:
+    name:         settings_edit
     category:     Project
-    display_name: Edit project
+    display_name: Edit project settings
 
   ticket_add:
     name:         ticket_add

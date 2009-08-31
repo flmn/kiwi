@@ -1,7 +1,6 @@
 rendering: ~
-security: ~
-projectSecurity:
-  class: projectSecurityFilter
+security:
+  class: mySecurityFilter
   param:
     type: security
 

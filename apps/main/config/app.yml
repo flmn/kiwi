@@ -1,4 +1,7 @@
 all:
+  security:
+    project_modules:      [component, milestone, project, settings, ticket]
+
   sf_captchagd:
     image_width:          100
     image_height:         29
