@@ -4,8 +4,18 @@ Permission:
     category:     Project
     display_name: Edit project settings
 
+  component_add:
+    name:         component_add
+    category:     Component
+    display_name: Add component
+
+  milestone_add:
+    name:         milestone_add
+    category:     Milestone
+    display_name: Add milestone
+
   ticket_add:
     name:         ticket_add
     category:     Ticket
-    display_name: Add tickets
+    display_name: Add ticket
   

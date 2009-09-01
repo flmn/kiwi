@@ -1,7 +1,7 @@
 Role:
   manager:
     name:        Manager
-    permissions: settings_edit,ticket_add
+    permissions: settings_edit,component_add,milestone_add,ticket_add
     
   developer:
     name:        Developer

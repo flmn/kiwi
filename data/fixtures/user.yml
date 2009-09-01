@@ -6,6 +6,13 @@ User:
     is_admin:     true
     language:     en_US
     theme:        redmond
+  mgr:
+    email:        mgr@kiwi.mail
+    password:     mgr
+    display_name: Manager
+    is_admin:     false
+    language:     en_US
+    theme:        redmond
   dev:
     email:        dev@kiwi.mail
     password:     dev

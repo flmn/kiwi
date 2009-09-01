@@ -11,7 +11,7 @@
       <input type="submit" value="<?php echo __('Save', array(), 'sf_admin') ?>" />
     </p>
     <?php include_partial('common/form_errors', array('form' => $form)) ?>
-    <table>
+    <table class="form">
       <thead>
         <tr>
           <th colspan="3"><?php echo __('Basic') ?></th>
@@ -30,7 +30,7 @@
             )) ?>
       </tbody>
     </table>
-    <table>
+    <table class="form">
       <thead>
         <tr>
           <th colspan="3"><?php echo __('Change Password') ?></th>
