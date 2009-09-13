@@ -11,8 +11,9 @@
   <table class="data">
     <thead>
       <tr>
-        <th>Ticket</th>
-        <th>subject</th>
+        <th width="30"><?php echo __('Type') ?></th>
+        <th><?php echo __('Ticket') ?></th>
+        <th><?php echo __('Subject') ?></th>
       </tr>
     </thead>
     <tfoot>
@@ -28,6 +29,7 @@
     <tbody>
       <?php foreach ($pager->getResults() as $i => $ticket): ?>
       <tr class="<?php echo fmod($i, 2) ? 'even' : 'odd' ?>">
+        <td><span style="background-color: <?php echo $ticket['type']['color'] ?>">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
         <td>
             <?php echo link_to('#'.$ticket['ticket_number'], 'ticket_show', array('project_id' => $project['identifier'], 'id' => $ticket['id'])) ?>
         </td>

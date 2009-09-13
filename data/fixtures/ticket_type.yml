@@ -2,8 +2,10 @@ TicketType:
   feature:
     name:       Feature
     is_default: true
+    color:      '#00ff00'
     position:   1
 
   bug:
     name:       Bug
+    color:      '#ff0000'
     position:   2

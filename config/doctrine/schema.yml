@@ -191,6 +191,7 @@ TicketType:
   columns:
     type_name:        { type: string(64), notnull: true, unique: true, name: type_name as name }
     is_default:       { type: boolean, notnull: true, default: false }
+    color:            { type: string(7) }
     position:         { type: integer }
 
 #-------------------------------------------------------------------------------

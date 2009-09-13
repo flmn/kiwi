@@ -14,7 +14,8 @@
   <h3><?php echo __('Ticket').': #'.$ticket['ticket_number'] ?></h3>
   <hr/>
   <div id="ticket">
-    <h4><?php echo $ticket['type'].': '.$ticket['subject'] ?></h4>
+    <h4><span style="background-color: <?php echo $ticket['type']['color'] ?>">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+    <?php echo $ticket['type'].': '.$ticket['subject'] ?></h4>
     <table class="properties">
       <tbody>
         <tr>
