@@ -76,7 +76,7 @@ all:
 #    class: sfI18N
 #    param:
 #      source:               XLIFF
-#      debug:                off
+#      debug:                false
 #      untranslated_prefix:  "[T]"
 #      untranslated_suffix:  "[/T]"
 #      cache:
@@ -105,6 +105,12 @@ all:
 #          cache_dir:                 %SF_CONFIG_CACHE_DIR%/routing
 #          lifetime:                  31556926
 #          prefix:                    %SF_APP_DIR%/routing
+
+  view_cache_manager:
+    class: sfViewCacheManager
+    param:
+      cache_key_use_vary_headers: true
+      cache_key_use_host_name:    true
 #
 #  logger:
 #    class: sfAggregateLogger
