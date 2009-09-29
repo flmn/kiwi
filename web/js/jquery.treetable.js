@@ -1,9 +1,10 @@
-/* jQuery treeTable Plugin 2.2.2 - http://ludo.cubicphuse.nl/jquery-plugins/treeTable/ */
+/* jQuery treeTable Plugin 2.2.3 - http://ludo.cubicphuse.nl/jquery-plugins/treeTable/ */
 (function($) {
   // Helps to make options available to all functions
   // TODO: This gives problems when there are both expandable and non-expandable
   // trees on a page. The options shouldn't be global to all these instances!
   var options;
+  var defaultPaddingLeft;
   
   $.fn.treeTable = function(opts) {
     options = $.extend({}, $.fn.treeTable.defaults, opts);
@@ -12,6 +13,13 @@
       $(this).addClass("treeTable").find("tbody tr").each(function() {
         // Initialize root nodes only if possible
         if(!options.expandable || $(this)[0].className.search("child-of-") == -1) {
+          // To optimize performance of indentation, I retrieve the padding-left
+          // value of the first root node. This way I only have to call +css+ 
+          // once.
+          if (isNaN(defaultPaddingLeft)) {
+            defaultPaddingLeft = parseInt($($(this).children("td")[options.treeColumn]).css('padding-left'), 10);
+          }
+          
           initialize($(this));
         } else if(options.initialState == "collapsed") {
           this.style.display = "none"; // Performance! $(this).hide() is slow...
@@ -38,7 +46,7 @@
         $(this).collapse();
       }
       
-      $(this).hide();
+      this.style.display = "none"; // Performance! $(this).hide() is slow...
     });
     
     return this;
@@ -55,6 +63,7 @@
         $(this).expand();
       }
       
+      // this.style.display = "table-row"; // Unfortunately this is not possible with IE :-(
       $(this).show();
     });
     
@@ -118,11 +127,14 @@
     return $("table.treeTable tbody tr." + options.childPrefix + node[0].id);
   };
   
+  function getPaddingLeft(node) {
+    var paddingLeft = parseInt(node[0].style.paddingLeft, 10);
+    return (isNaN(paddingLeft)) ? defaultPaddingLeft : paddingLeft;
+  }
+  
   function indent(node, value) {
     var cell = $(node.children("td")[options.treeColumn]);
-    var padding = parseInt(cell.css("padding-left"), 10) + value;
-    
-    cell.css("padding-left", + padding + "px");
+    cell[0].style.paddingLeft = getPaddingLeft(cell) + value + "px";
     
     childrenOf(node).each(function() {
       indent($(this), value);
@@ -141,10 +153,10 @@
       
       if(node.hasClass("parent")) {
         var cell = $(node.children("td")[options.treeColumn]);
-        var padding = parseInt(cell.css("padding-left"), 10) + options.indent;
+        var padding = getPaddingLeft(cell) + options.indent;
         
         childNodes.each(function() {
-          $($(this).children("td")[options.treeColumn]).css("padding-left", padding + "px");
+          $(this).children("td")[options.treeColumn].style.paddingLeft = padding + "px";
         });
         
         if(options.expandable) {
@@ -152,7 +164,7 @@
           $(cell[0].firstChild).click(function() { node.toggleBranch(); });
           
           if(options.clickableNodeNames) {
-            $(cell).css('cursor', 'pointer');
+            cell[0].style.cursor = "pointer";
             $(cell).click(function(e) {
               // Don't double-toggle if the click is on the existing expander icon
               if (e.target.className != 'expander') {

@@ -4,19 +4,14 @@
     <?php include_http_metas() ?>
     <?php include_metas() ?>
     <?php include_title() ?>
-    <link rel="shortcut icon" href="/favicon.ico" />
-
-    <script type="text/javascript" src="/js/jquery.js"></script>
-    <script type="text/javascript" src="/js/jquery-ui.js"></script>
-    <script type="text/javascript" src="/js/jquery.layout.js"></script>
-
+    <link rel="shortcut icon" href="/favicon.ico" />    
+    <?php include_javascripts() ?>
     <!--[if lt IE 8]>
-    <link rel="stylesheet" href="/css/bp/ie.css" type="text/css" media="screen, projection" />
+    <link rel="stylesheet" href="/css/bp/ie.css" type="text/css" media="screen" />
     <![endif]-->
-    <link rel="stylesheet" href="/css/bp/screen.css" type="text/css" media="screen, projection" />
-    <link rel="stylesheet" href="/css/symfony.css" type="text/css" media="screen, projection" />
-    <link rel="stylesheet" href="/themes/<?php echo $sf_user->getAttribute('theme', sfConfig::get('sf_default_theme'), 'kiwi') ?>/jquery-ui.css" type="text/css" media="screen, projection" />
-    <link rel="stylesheet" href="/themes/<?php echo $sf_user->getAttribute('theme', sfConfig::get('sf_default_theme'), 'kiwi') ?>/theme.css" type="text/css" media="screen, projection" />
+    <?php include_stylesheets() ?>
+    <link rel="stylesheet" href="/themes/<?php echo $sf_user->getAttribute('theme', sfConfig::get('sf_default_theme'), 'kiwi') ?>/jquery-ui.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="/themes/<?php echo $sf_user->getAttribute('theme', sfConfig::get('sf_default_theme'), 'kiwi') ?>/theme.css" type="text/css" media="screen" />
   </head>
   <body>
     <div id="north" class="ui-layout-north kiwi-panel">
@@ -55,6 +50,7 @@
     </div>
 
     <script type="text/javascript">
+      /* <![CDATA[ */
       var layout;
       $(function () {
         layout = $('body').layout(layout_settings);
@@ -83,6 +79,7 @@
           size: 30
         }
       };
+      /* ]]> */
     </script>
   </body>
 </html>

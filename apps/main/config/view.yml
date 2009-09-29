@@ -9,9 +9,9 @@ default:
     #language:     en
     #robots:       index, follow
 
-  stylesheets:    []
+  stylesheets:    [bp/screen.css, symfony.css]
 
-  javascripts:    []
+  javascripts:    [jquery.js, jquery-ui.js, jquery.layout.js]
 
   has_layout:     true
   layout:         layout

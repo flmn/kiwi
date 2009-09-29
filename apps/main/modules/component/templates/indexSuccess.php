@@ -46,7 +46,7 @@
 
 <script type="text/javascript">
   /* <![CDATA[ */
-  $(document).ready(function()  {
+  $(function()  {
     $("#tree-table").treeTable({
       clickableNodeNames: true,
       indent: 15,
